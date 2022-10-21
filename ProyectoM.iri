@@ -1,0 +1,88 @@
+-- Scale Aliases
+
+-- Digital I/O Aliases
+DIOCRD0   : constant integer := 0;
+DIO0_1    : constant integer := 1;
+DIO0_2    : constant integer := 2;
+DIO0_3    : constant integer := 3;
+DIO0_4    : constant integer := 4;
+DIO0_5    : constant integer := 5;
+DIO0_6    : constant integer := 6;
+DIO0_7    : constant integer := 7;
+DIO0_8    : constant integer := 8;
+
+
+
+-- Analog Output Aliases
+
+-- Database Type Definitions and Field Aliases
+type EnvaseDatabase is database ("Envase")
+        Id: Integer;
+    Codigo: String;
+    Nombre: String;
+end database;
+type ProductoDatabase is database ("Producto")
+        Id: Integer;
+    Codigo: String;
+    Nombre: String;
+  IdEnvase: Integer;
+end database;
+type PesajeDatabase is database ("Pesaje")
+        Id: Integer;
+  PesoObje: Real;
+  PesoObte: Real;
+     Fecha: DateTime;
+end database;
+
+Envase_Id       : constant integer := 1;
+Envase_Codigo   : constant integer := 2;
+Envase_Nombre   : constant integer := 3;
+
+Producto_Id       : constant integer := 1;
+Producto_Codigo   : constant integer := 2;
+Producto_Nombre   : constant integer := 3;
+Producto_IdEnvase : constant integer := 4;
+
+Pesaje_Id       : constant integer := 1;
+Pesaje_PesoObje : constant integer := 2;
+Pesaje_PesoObte : constant integer := 3;
+Pesaje_Fecha    : constant integer := 4;
+
+
+
+-- Serial Port Aliases
+Port1     : constant integer := 1;
+Port2     : constant integer := 2;
+Port3     : constant integer := 3;
+
+-- Ethernet Communication Aliases
+TCPS      : constant string := "TCPS";
+UDPS      : constant string := "UDPS";
+TCPC1     : constant string := "TCPC1";
+TCPC2     : constant string := "TCPC2";
+TCPC3     : constant string := "TCPC3";
+
+-- Setpoint Aliases
+
+-- Widget Aliases
+lbl1      : constant integer := 1;
+lbl2      : constant integer := 2;
+lbl3      : constant integer := 3;
+lbl4      : constant integer := 4;
+lbl5      : constant integer := 5;
+lbl7      : constant integer := 7;
+bar10     : constant integer := 10;
+bar11     : constant integer := 11;
+lbl12     : constant integer := 12;
+lbl13     : constant integer := 13;
+lbl14     : constant integer := 14;
+lbl15     : constant integer := 15;
+lbl16     : constant integer := 16;
+lbl17     : constant integer := 17;
+lbl18     : constant integer := 18;
+lbl19     : constant integer := 19;
+lbl20     : constant integer := 20;
+lbl21     : constant integer := 21;
+
+USBPRN    : constant string := "USBPRN";
+ADVPRN    : constant string := "ADVPRN";

@@ -1,0 +1,18 @@
+elsif EventWidget=lbl1 then
+g_tipoDeEnvase:=CONST_GALON;
+pMuestraPantallaProceso;
+
+elsif EventWidget=lbl2 then
+g_tipoDeEnvase:=CONST_01LITRO;
+pMuestraPantallaProceso;
+
+elsif EventWidget=lbl3 then
+g_tipoDeEnvase:=CONST_02LITRO;
+pMuestraPantallaProceso;
+
+elsif EventWidget=lbl4 then
+g_tipoDeEnvase:=CONST_20LITRO;
+pMuestraPantallaProceso;
+
+elsif EventWidget=lbl7 then
+pMuestraMenuPrincipal;

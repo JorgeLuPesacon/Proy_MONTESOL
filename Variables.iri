@@ -1,0 +1,16 @@
+Type TypPantalla is (
+    tPntProcesoDePesaje,
+    tPntMenuPrincipal
+);
+g_PantallaActiva:TypPantalla;
+
+
+Type TypEnvase is (
+    tBotella01Litro,
+    tGalon,
+    tBotella02Litro,
+    tBotella20Litro
+);
+g_TipoEnvase:TypEnvase;
+
+g_tipoDeEnvase:string;

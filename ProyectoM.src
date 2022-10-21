@@ -1,0 +1,27 @@
+program ProyectoM;
+
+#include ProyectoM.iri
+#include Variables.iri
+#include Constantes.iri
+#include NombrePantallas.iri
+
+
+
+
+handler widgetClicked;
+begin
+	if 1 = 0 then
+		return;
+	#include Navegacion.iri
+    #include Operaciones.iri
+    end if;
+end;
+
+
+
+
+
+begin
+    pMuestraPantallaProceso;
+    DisplayStatus("Hola Hoy");
+end ProyectoM;

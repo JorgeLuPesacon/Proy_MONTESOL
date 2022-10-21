@@ -1,0 +1,13 @@
+procedure pMuestraPantallaProceso;
+begin
+    SelectScreen(2);
+    g_PantallaActiva:=tPntProcesoDePesaje;
+    SetLabelText(lbl12,g_tipoDeEnvase);
+end;
+
+procedure pMuestraMenuPrincipal;
+begin
+    SelectScreen(1);
+    g_PantallaActiva:=tPntMenuPrincipal;
+end;
+
