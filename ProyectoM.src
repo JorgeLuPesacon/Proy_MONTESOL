@@ -1,10 +1,15 @@
 program ProyectoM;
 
 #include ProyectoM.iri
+#include EntidadesDB.iri
 #include Variables.iri
+#include Common.iri
 #include Constantes.iri
+#include Database/FuncionesDB.iri
+#include Database/Envase.iri
+#include Database/Producto.iri
 #include NombrePantallas.iri
-
+#include DatosPorDefectos.iri
 
 
 
@@ -18,10 +23,8 @@ begin
 end;
 
 
-
-
-
 begin
+    pAlmacenarDatosInicial;
     pMuestraPantallaProceso;
     DisplayStatus("Hola Hoy");
 end ProyectoM;

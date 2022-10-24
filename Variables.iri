@@ -1,16 +1,38 @@
+g_Envase: Stored  TypEnvase;
+t_Envase: TypEnvase;
+g_ListaEnvase: TypArrayEnvase;
+
+g_Producto: Stored TypProducto;
+t_Producto: TypProducto;
+g_ListaProducto: TypArrayProducto;
+
+
 Type TypPantalla is (
     tPntProcesoDePesaje,
-    tPntMenuPrincipal
+    tPntMenuPrincipal,
+    tPntMenuMantenimiento,
+    tPntMantEnvases,
+    tPntMantProductos
 );
 g_PantallaActiva:TypPantalla;
 
 
-Type TypEnvase is (
+Type TypTiposEnvase is (
     tBotella01Litro,
     tGalon,
     tBotella02Litro,
     tBotella20Litro
 );
-g_TipoEnvase:TypEnvase;
+g_TipoEnvase:TypTiposEnvase;
+
+Type TypLineaProd is (
+    tLProduccion01,
+    tLProduccion02
+);
+g_TipoLineaProd:TypLineaProd;
+
 
 g_tipoDeEnvase:string;
+
+
+

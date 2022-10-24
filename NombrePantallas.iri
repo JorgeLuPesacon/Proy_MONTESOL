@@ -2,7 +2,12 @@ procedure pMuestraPantallaProceso;
 begin
     SelectScreen(2);
     g_PantallaActiva:=tPntProcesoDePesaje;
-    SetLabelText(lbl12,g_tipoDeEnvase);
+    if g_TipoLineaProd=tLProduccion01 then
+        SetLabelText(lbl12,g_tipoDeEnvase);
+    elsif g_TipoLineaProd=tLProduccion02 then
+        SetLabelText(lbl13,g_tipoDeEnvase);
+    end if;
+    
 end;
 
 procedure pMuestraMenuPrincipal;
@@ -11,3 +16,22 @@ begin
     g_PantallaActiva:=tPntMenuPrincipal;
 end;
 
+procedure pMuestraMenuMantenimiento;
+begin
+    SelectScreen(3);
+    g_PantallaActiva:=tPntMenuMantenimiento;
+end;
+
+
+procedure pMuestraMantenimientoEnvases;
+begin
+    SelectScreen(4);
+    g_PantallaActiva:=tPntMantEnvases;
+end;
+
+
+procedure pMuestraMantenimientoProductos;
+begin
+    SelectScreen(5);
+    g_PantallaActiva:=tPntMantProductos;
+end;

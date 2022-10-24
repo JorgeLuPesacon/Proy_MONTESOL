@@ -1,0 +1,38 @@
+procedure pPostEnvase(entidad : TypEnvase);
+sql : string;
+conexion : integer;
+sResultado : SysCode;
+id : integer;
+l_Nombretabla:string:="Envase";
+begin
+    id := fGetNextId(l_Nombretabla,CONST_MAX_DB_ENVASE);
+    sql := "Insert into Envase (Id, Codigo, Nombre) values (";
+    sql := sql + IntegerToString(id, 0) + ",";
+    sql := sql + "'"+ entidad.Codigo + "', ";
+    sql := sql + "'" +entidad.Nombre + "')";
+
+    sResultado := DbExec(sql, conexion);
+    if (sResultado <> SysOk) then
+        pLoggerDB("pPostEnvase",DBErrMsg);
+        return;
+    end if;
+    --pMostrarYLimpiar("Se agrego correctamente");
+end;
+
+procedure pPutEnvase(entidad : TypEnvase);
+sql : string;
+conexion : integer;
+sResultado : SysCode;
+
+begin
+	sql:="Update Envase set ";
+	sql:=sql + "codigo='" + entidad.Codigo+ "',";
+	sql:=sql + "nombre='" + entidad.Nombre + "' ";
+	sql:=sql + "where id="+IntegerToString(entidad.Id,0);
+			
+	sResultado := DbExec(sql, conexion);
+	if (sResultado <> SysOk) then
+		pLoggerDB("pPutEnvase",DBErrMsg);
+		return;
+	end if;
+end;

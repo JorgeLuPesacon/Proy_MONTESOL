@@ -1,0 +1,56 @@
+procedure pAlmacenarDatosInicialEnvase;
+hayDatos: BooleanType;
+begin
+    hayDatos:=fExisteDatosEnTabla("Envase");
+    if (hayDatos=BoolTrue) then
+        return;
+    end if;
+    t_Envase.Codigo:="E001";
+    t_Envase.Nombre:="GALON DE 40 LITROS";
+    pPostEnvase(t_Envase);
+    t_Envase.Codigo:="E002";
+    t_Envase.Nombre:="01 LITRO";
+    pPostEnvase(t_Envase);
+    t_Envase.Codigo:="E003";
+    t_Envase.Nombre:="02 LITROS";
+    pPostEnvase(t_Envase);
+    t_Envase.Codigo:="E004";
+    t_Envase.Nombre:="20 LITROS";
+    pPostEnvase(t_Envase);
+end;
+
+procedure pAlmacenarDatosInicialProducto;
+hayDatos: BooleanType;
+begin
+    hayDatos:=fExisteDatosEnTabla("Producto");
+    if (hayDatos=BoolTrue) then
+        return;
+    end if;
+        t_Producto.Codigo:="INS001";
+        t_Producto.Nombre:="ARENA";
+        t_Producto.IdEnvase:=1;
+        pPostProducto(t_Producto);
+        t_Producto.Codigo:="INS002";
+        t_Producto.Nombre:="CEMENTO";
+        t_Producto.IdEnvase:=2;
+        pPostProducto(t_Producto);
+        t_Producto.Codigo:="INS003";
+        t_Producto.Nombre:="ESPEZANTE";
+        t_Producto.IdEnvase:=3;
+        pPostProducto(t_Producto);
+        t_Producto.Codigo:="INS004";
+        t_Producto.Nombre:="AGUA";
+        t_Producto.IdEnvase:=2;
+        pPostProducto(t_Producto);
+        t_Producto.Codigo:="INS005";
+        t_Producto.Nombre:="COLORANTE";
+        t_Producto.IdEnvase:=4;
+        pPostProducto(t_Producto);
+end;
+
+procedure pAlmacenarDatosInicial;
+begin
+	pAlmacenarDatosInicialEnvase;
+    pAlmacenarDatosInicialProducto;
+    
+end;

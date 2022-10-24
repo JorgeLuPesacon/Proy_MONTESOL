@@ -1,0 +1,7 @@
+elsif EventWidget=lbl21 then
+pMuestraMenuPrincipal;
+g_TipoLineaProd:=tLProduccion01;
+
+elsif EventWidget=lbl19 then
+pMuestraMenuPrincipal;
+g_TipoLineaProd:=tLProduccion02;

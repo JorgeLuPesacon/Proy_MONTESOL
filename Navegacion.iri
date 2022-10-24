@@ -14,5 +14,16 @@ elsif EventWidget=lbl4 then
 g_tipoDeEnvase:=CONST_20LITRO;
 pMuestraPantallaProceso;
 
-elsif EventWidget=lbl7 then
-pMuestraMenuPrincipal;
+
+elsif EventWidget=lbl7 or EventWidget=lbl32 or 
+EventWidget=lbl41 then
+pMuestraMenuMantenimiento;
+
+elsif EventWidget=lbl26 then
+pMuestraPantallaProceso;
+
+elsif EventWidget=lbl8 then
+pMuestraMantenimientoEnvases;
+
+elsif EventWidget=lbl24 then
+pMuestraMantenimientoProductos;
