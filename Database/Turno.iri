@@ -1,4 +1,4 @@
-procedure pPostTurnos(entidad : TypTurnos);
+procedure pPostTurnos(entidad : TypMantGenerico);
 sql : string;
 conexion : integer;
 sResultado : SysCode;
@@ -19,16 +19,16 @@ begin
     --pMostrarYLimpiar("Se agrego correctamente");
 end;
 
-procedure pPutTurnos(entidad : TypTurnos);
+procedure pPutTurnos(entidad : TypMantGenerico);
 sql : string;
 conexion : integer;
 sResultado : SysCode;
 
 begin
-	sql:="Update Envase set ";
+	sql:="Update Turnos set ";
 	sql:=sql + "codigo='" + entidad.Codigo+ "',";
 	sql:=sql + "nombre='" + entidad.Nombre + "' ";
-    sql:=sql + " where id="+IntegerToString(entidad.Id,0);
+    sql:=sql + " where id="+IntegerToString(g_IdItemActual,0);
 			
 	sResultado := DbExec(sql, conexion);
 	if (sResultado <> SysOk) then
@@ -136,7 +136,7 @@ begin
     end loop;
 
     DbFinalize(conexion);
-    pMostrarYLimpiar("Se listo correctamente");
+    --pMostrarYLimpiar("Se listo correctamente");
 
     return listado;
 end;

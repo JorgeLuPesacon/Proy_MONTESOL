@@ -1,4 +1,4 @@
-procedure pPostEnvase(entidad : TypEnvase);
+procedure pPostEnvase(entidad : TypMantGenerico);
 sql : string;
 conexion : integer;
 sResultado : SysCode;
@@ -10,8 +10,8 @@ begin
     sql := sql + IntegerToString(id, 0) + ",";
     sql := sql + "'"+ entidad.Codigo + "', ";
     sql := sql + "'" +entidad.Nombre + "',";
-    sql := sql + IntegerToString(entidad.CorteGrueso,0) + ",";
-    sql := sql + IntegerToString(entidad.CorteFino,0) + ",";
+    sql := sql + RealToString(entidad.CorteGrueso,4,2) + ",";
+    sql := sql + RealToString(entidad.CorteFino,4,2) + ",";
     sql := sql + IntegerToString(entidad.PreActivo,0) + ")";
 
     sResultado := DbExec(sql, conexion);
@@ -22,7 +22,7 @@ begin
     --pMostrarYLimpiar("Se agrego correctamente");
 end;
 
-procedure pPutEnvase(entidad : TypEnvase);
+procedure pPutEnvase(entidad : TypMantGenerico);
 sql : string;
 conexion : integer;
 sResultado : SysCode;
@@ -31,10 +31,10 @@ begin
 	sql:="Update Envase set ";
 	sql:=sql + "Codigo='" + entidad.Codigo+ "',";
 	sql:=sql + "Nombre='" + entidad.Nombre + "', ";
-    sql:=sql + "CorteGru="+IntegerToString(entidad.CorteGrueso,0) + ",";
-    sql:=sql + "CorteFno="+IntegerToString(entidad.CorteFino,0) + ",";
+    sql:=sql + "CorteGru="+RealToString(entidad.CorteGrueso,4,2) + ",";
+    sql:=sql + "CorteFno="+RealToString(entidad.CorteFino,4,2) + ",";
     sql:=sql + "PreActiv="+IntegerToString(entidad.PreActivo,0) + " ";
-	sql:=sql + "where id="+IntegerToString(entidad.Id,0);
+	sql:=sql + "where id="+IntegerToString(g_IdItemActual,0);
 			
 	sResultado := DbExec(sql, conexion);
 	if (sResultado <> SysOk) then
@@ -150,7 +150,7 @@ begin
     end loop;
 
     DbFinalize(conexion);
-    pMostrarYLimpiar("Se listo correctamente");
+    --pMostrarYLimpiar("Se listo correctamente");
 
     return listado;
 end;

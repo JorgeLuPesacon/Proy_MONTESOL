@@ -9,9 +9,13 @@ program ProyectoM;
 #include Database/Envase.iri
 #include Database/Turno.iri
 #include Database/Config.iri
+#include MostrarDatosEnEtiquetas.iri
+#include Database/ModificacionesDB.iri
+#include Procedimientos.iri
+#include FlowMantenimiento.iri
 #include NombrePantallas.iri
 #include DatosPorDefectos.iri
-#include MostrarDatosEnEtiquetas.iri
+
 #include NavegacionFlechasFisicas.iri
 
 
@@ -23,6 +27,28 @@ begin
 	#include Navegacion.iri
     #include Operaciones.iri
     end if;
+end;
+
+handler UserEntry;
+LocalEntry : string;
+begin
+	LocalEntry := GetEntry;
+	if EventKey = EnterKey then
+		if g_TipoMantenimiento=tipoMantEliminar then
+            pEliminarRegistroDB(g_IdItemActual);
+        elsif g_TipoMantenimiento=tipoMantEditarConfig then
+             if fValidarSiEsNumero(LocalEntry)=BoolTrue then
+                pActualizarTara(StringToReal(LocalEntry));
+                pMuestraConfiguracion;
+            end if;
+        else
+            if	(g_PantallaActiva = tPntMantTurnos) then
+                pMantenimientoDatos(LocalEntry);
+            elsif	(g_PantallaActiva = tPntMantEnvases) then
+                pMantenimientoDatos(LocalEntry);
+            end if;
+        end if;
+	end if;
 end;
 
 

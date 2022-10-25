@@ -6,10 +6,12 @@ elsif EventWidget=lbl26 then
 pMuestraPantallaProceso;
 
 elsif EventWidget=lbl8 then
+g_NombreMenuMantenimiento:=CONST_ENVASE_LABEL;
 pMuestraPantallaMantenimientoEnvases;
 pMuestraEnvases;
 
 elsif EventWidget=lbl24 then
+g_NombreMenuMantenimiento:=CONST_TURNOS_LABEL;
 pMuestraPantallaMantenimientoTurnos;
 pMuestraTurnos;
 

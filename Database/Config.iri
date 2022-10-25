@@ -25,7 +25,7 @@ sResultado : SysCode;
 
 begin
 	sql:="Update Config set ";
-	sql:=sql + "Tara=" +RealToString(entidad.Tara,4,2)+ ",";
+	sql:=sql + "Tara=" +RealToString(entidad.Tara,4,2)+ " ";
 	sql:=sql + " where id="+IntegerToString(entidad.Id,0);
 			
 	sResultado := DbExec(sql, conexion);
@@ -62,4 +62,21 @@ begin
     DbFinalize(conexion);
     pMostrarYLimpiar("Se obtuvo correctamente");
     return Config;
+end;
+
+
+procedure pActualizarTara(DatoTara: Real);
+sql : string;
+conexion : integer;
+sResultado : SysCode;
+
+begin
+	sql:="Update Config set ";
+    sql:=sql + "Tara=" +RealToString(DatoTara,4,2);
+				
+	sResultado := DbExec(sql, conexion);
+	if (sResultado <> SysOk) then
+		pLoggerDB("pActualizarTara",DBErrMsg);
+		return;
+	end if;
 end;

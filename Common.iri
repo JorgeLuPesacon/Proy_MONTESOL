@@ -1,7 +1,19 @@
 procedure pMostrarYLimpiar(valor : string);
 begin
 	DisplayStatus(valor);
-	SetTimer(1, 300);
+	SetTimer(1, 100);
 	SetTimerMode(1, TimerOneShot);
 	StartTimer(1);
+end;
+
+
+function fValidarSiEsNumero(valor : string) : BooleanType;
+local_Numero : integer;
+begin
+	local_Numero := StringToInteger(valor);
+	if (local_Numero <> 0) then
+		return BoolTrue;
+	else
+		return BoolFalse;
+	end if;
 end;

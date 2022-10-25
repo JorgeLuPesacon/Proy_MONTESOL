@@ -36,3 +36,33 @@ g_PaginaActual : integer;
 g_TotalPaginas : integer;
 g_TieneDatos : BooleanType;
 g_TotalRegistros : integer;
+
+
+Type TypTipoMantenimiento is (
+	tipoMantAgregar,
+	tipoMantEditar,
+	tipoMantEliminar,
+    tipoMantEditarConfig
+);
+
+g_TipoMantenimiento : TypTipoMantenimiento;
+
+
+type TypMantenimiento is (
+	tMantInicio, 
+	tMantCodigo,
+	tMantNombre,
+    tMantCorteGrueso,
+    tMantCorteFino,
+    tMantPreActivo
+);
+
+g_PasoMantenimiento : TypMantenimiento;
+
+
+
+t_MantGenerico : TypMantGenerico;
+
+g_NombreMenuMantenimiento:string;
+
+g_IdItemActual:integer;

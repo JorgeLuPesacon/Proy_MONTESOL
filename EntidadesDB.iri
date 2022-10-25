@@ -15,7 +15,6 @@ type TypTurnos is record
 	Id  :   integer;
 	Codigo: string;
 	Nombre: string;
-    IdEnvase:integer;
 end record;
 
 type TypArrayTurnos is array[10] of TypTurnos;
@@ -28,3 +27,12 @@ end record;
 
 
 
+type TypMantGenerico is record
+	Id: integer;
+	Codigo : string;
+	Nombre: string;
+  	CorteGrueso: Real;
+  	CorteFino: Real;
+  	PreActivo: Integer; 
+  
+end record;
