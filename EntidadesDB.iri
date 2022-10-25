@@ -1,26 +1,30 @@
 type TypEnvase is record
 	Id  :   integer;
 	Codigo: string;
-	Nombre: string; 
+	Nombre: string;
+  	CorteGrueso: Real;
+  	CorteFino: Real;
+  	PreActivo: Integer; 
 end record;
 
-type TypArrayEnvase is array[10] of TypEnvase;
+type TypArrayEnvases is array[10] of TypEnvase;
 
 
---*****************Tipo Usos*****************
-type TypProducto is record
+--*****************Tipo Turnos*****************
+type TypTurnos is record
 	Id  :   integer;
 	Codigo: string;
 	Nombre: string;
     IdEnvase:integer;
 end record;
 
-type TypArrayProducto is array[10] of TypProducto;
+type TypArrayTurnos is array[10] of TypTurnos;
 
-type TypMantGenerico is record
-	Id: integer;
-	Codigo : string;
-	Nombre: string;
-	IdEnvase:integer;
-  
+
+type TypConfig is record
+	Id  :   integer;
+	Tara: Real;
 end record;
+
+
+

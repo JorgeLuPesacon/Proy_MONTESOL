@@ -10,28 +10,34 @@ begin
     
 end;
 
-procedure pMuestraMenuPrincipal;
+procedure pMuestraPantallaMenuPrincipal;
 begin
     SelectScreen(1);
     g_PantallaActiva:=tPntMenuPrincipal;
 end;
 
-procedure pMuestraMenuMantenimiento;
+procedure pMuestraPantallaMenuMantenimiento;
 begin
     SelectScreen(3);
     g_PantallaActiva:=tPntMenuMantenimiento;
 end;
 
 
-procedure pMuestraMantenimientoEnvases;
+procedure pMuestraPantallaMantenimientoEnvases;
 begin
     SelectScreen(4);
     g_PantallaActiva:=tPntMantEnvases;
 end;
 
 
-procedure pMuestraMantenimientoProductos;
+procedure pMuestraPantallaMantenimientoTurnos;
 begin
     SelectScreen(5);
-    g_PantallaActiva:=tPntMantProductos;
+    g_PantallaActiva:=tPntMantTurnos;
+end;
+
+procedure pMuestraPantallaConfiguracion;
+begin
+    SelectScreen(6);
+    g_PantallaActiva:=tPntConfiguracion;
 end;

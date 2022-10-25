@@ -7,50 +7,66 @@ begin
     end if;
     t_Envase.Codigo:="E001";
     t_Envase.Nombre:="GALON DE 40 LITROS";
+    t_Envase.CorteGrueso:=40.0;
+    t_Envase.CorteFino:=39.5;
+    t_Envase.PreActivo:=1;
     pPostEnvase(t_Envase);
     t_Envase.Codigo:="E002";
     t_Envase.Nombre:="01 LITRO";
+    t_Envase.CorteGrueso:=1.0;
+    t_Envase.CorteFino:=0.99;
+    t_Envase.PreActivo:=1;
     pPostEnvase(t_Envase);
     t_Envase.Codigo:="E003";
     t_Envase.Nombre:="02 LITROS";
+    t_Envase.CorteGrueso:=1.98;
+    t_Envase.CorteFino:=1.99;
+    t_Envase.PreActivo:=1;
     pPostEnvase(t_Envase);
     t_Envase.Codigo:="E004";
     t_Envase.Nombre:="20 LITROS";
+    t_Envase.CorteGrueso:=19.0;
+    t_Envase.CorteFino:=19.5;
+    t_Envase.PreActivo:=1;
     pPostEnvase(t_Envase);
 end;
 
-procedure pAlmacenarDatosInicialProducto;
+procedure pAlmacenarDatosInicialTurnos;
 hayDatos: BooleanType;
 begin
-    hayDatos:=fExisteDatosEnTabla("Producto");
+    hayDatos:=fExisteDatosEnTabla("Turnos");
     if (hayDatos=BoolTrue) then
         return;
     end if;
-        t_Producto.Codigo:="INS001";
-        t_Producto.Nombre:="ARENA";
-        t_Producto.IdEnvase:=1;
-        pPostProducto(t_Producto);
-        t_Producto.Codigo:="INS002";
-        t_Producto.Nombre:="CEMENTO";
-        t_Producto.IdEnvase:=2;
-        pPostProducto(t_Producto);
-        t_Producto.Codigo:="INS003";
-        t_Producto.Nombre:="ESPEZANTE";
-        t_Producto.IdEnvase:=3;
-        pPostProducto(t_Producto);
-        t_Producto.Codigo:="INS004";
-        t_Producto.Nombre:="AGUA";
-        t_Producto.IdEnvase:=2;
-        pPostProducto(t_Producto);
-        t_Producto.Codigo:="INS005";
-        t_Producto.Nombre:="COLORANTE";
-        t_Producto.IdEnvase:=4;
-        pPostProducto(t_Producto);
+        t_Turnos.Codigo:="T001";
+        t_Turnos.Nombre:="TURNO MAÑANA";
+        pPostTurnos(t_Turnos);
+        t_Turnos.Codigo:="T002";
+        t_Turnos.Nombre:="TURNO TARDE";
+        pPostTurnos(t_Turnos);
+        t_Turnos.Codigo:="T003";
+        t_Turnos.Nombre:="TURNO NOCHE";
+        pPostTurnos(t_Turnos);
 end;
+
+procedure pAlmacenarDatosInicialConfig;
+hayDatos: BooleanType;
+begin
+    hayDatos:=fExisteDatosEnTabla("Config");
+    if (hayDatos=BoolTrue) then
+        return;
+    end if;
+        t_Config.Tara:=4.36;
+        pPostConfig(t_Config);
+        DisplayStatus("SEinserto el config"+ realtostring(t_config.tara,4,2) );
+end;
+
+
 
 procedure pAlmacenarDatosInicial;
 begin
 	pAlmacenarDatosInicialEnvase;
-    pAlmacenarDatosInicialProducto;
+    pAlmacenarDatosInicialTurnos;
+    pAlmacenarDatosInicialConfig;
     
 end;

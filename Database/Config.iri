@@ -1,0 +1,65 @@
+procedure pPostConfig(entidad : TypConfig);
+sql : string;
+conexion : integer;
+sResultado : SysCode;
+id : integer;
+l_Nombretabla:string:="Config";
+begin
+    id := fGetNextId(l_Nombretabla,CONST_MAX_DB_CONFIG);
+    sql := "Insert into config (Id, tara) values (";
+    sql := sql + IntegerToString(id, 0) + ",";
+    sql := sql + RealToString(entidad.Tara,4,2) + ")";
+    
+    sResultado := DbExec(sql, conexion);
+    if (sResultado <> SysOk) then
+        pLoggerDB("pPostConfig",DBErrMsg);
+        return;
+    end if;
+    pMostrarYLimpiar("Se agrego correctamenteel config");
+end;
+
+procedure pPutConfig(entidad : TypConfig);
+sql : string;
+conexion : integer;
+sResultado : SysCode;
+
+begin
+	sql:="Update Config set ";
+	sql:=sql + "Tara=" +RealToString(entidad.Tara,4,2)+ ",";
+	sql:=sql + " where id="+IntegerToString(entidad.Id,0);
+			
+	sResultado := DbExec(sql, conexion);
+	if (sResultado <> SysOk) then
+		pLoggerDB("pPutConfig",DBErrMsg);
+		return;
+	end if;
+
+end;
+
+function fGetConfig : TypConfig;
+sql : string;
+conexion : integer;
+sResultado : SysCode;
+Config : TypConfig;
+begin
+    sql:="select * from Config limit 1";
+    sResultado := DbExec(sql, conexion);
+    --Primero verificamos que la consulta sea diferente de OK. Esto es error
+    if(sResultado<>SysOk) then 
+        pLoggerDB("fGetConfig",DBErrMsg);
+        return Config;
+    end if;
+    
+    -- Luego verificamos que la conexión sea = 0. Eso quiere decir que no hay datos para recuperar
+    if (conexion=0) then
+        return Config;
+    end if;
+
+    -- Caso contrario, tomamos los datos y los leemos.
+    DbColumnInt(conexion, 1, Config.Id); 
+    DbColumnReal(conexion, 2, Config.Tara);  
+    sResultado := DbNext(conexion);  
+    DbFinalize(conexion);
+    pMostrarYLimpiar("Se obtuvo correctamente");
+    return Config;
+end;

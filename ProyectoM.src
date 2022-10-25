@@ -7,9 +7,12 @@ program ProyectoM;
 #include Constantes.iri
 #include Database/FuncionesDB.iri
 #include Database/Envase.iri
-#include Database/Producto.iri
+#include Database/Turno.iri
+#include Database/Config.iri
 #include NombrePantallas.iri
 #include DatosPorDefectos.iri
+#include MostrarDatosEnEtiquetas.iri
+#include NavegacionFlechasFisicas.iri
 
 
 

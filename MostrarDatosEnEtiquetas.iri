@@ -1,0 +1,38 @@
+procedure pMuestraTurnos;
+begin
+	if (g_IndexRegistro<=0)   then
+		SetLabelText(lbl39,"");
+		SetLabelText(lbl38,"");
+	else
+		g_ListaTurnos:=fListaTurnos;
+		SetLabelText(lbl39,g_ListaTurnos[g_IndexRegistro].Codigo);
+		SetLabelText(lbl38,g_ListaTurnos[g_IndexRegistro].Nombre);
+	end if;
+end;
+
+
+procedure pMuestraEnvases;
+begin
+	if (g_IndexRegistro<=0)   then
+		SetLabelText(lbl30,"");
+		SetLabelText(lbl29,"");
+	else
+		g_ListaEnvases:=fListaEnvase;
+		SetLabelText(lbl30,g_ListaEnvases[g_IndexRegistro].Codigo);
+		SetLabelText(lbl29,g_ListaEnvases[g_IndexRegistro].Nombre);
+		SetLabelText(lbl65,RealToString(g_ListaEnvases[g_IndexRegistro].CorteGrueso,0,2));
+		SetLabelText(lbl66,RealToString(g_ListaEnvases[g_IndexRegistro].CorteFino,0,2));
+		SetLabelText(lbl67,IntegerToString(g_ListaEnvases[g_IndexRegistro].PreActivo,0));
+	end if;
+end;
+
+procedure pMuestraConfiguracion;
+begin
+	--if (g_IndexRegistro<=0)   then
+	--	SetLabelText(lbl46,"");
+	--else
+		t_Config:=fGetConfig;
+		SetLabelText(lbl46,RealToString(t_Config.Tara,0,2));
+	--end if;
+end;
+

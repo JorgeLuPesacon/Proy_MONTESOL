@@ -1,29 +1,24 @@
 g_Envase: Stored  TypEnvase;
 t_Envase: TypEnvase;
-g_ListaEnvase: TypArrayEnvase;
+g_ListaEnvases: TypArrayEnvases;
 
-g_Producto: Stored TypProducto;
-t_Producto: TypProducto;
-g_ListaProducto: TypArrayProducto;
+g_Turnos: Stored TypTurnos;
+t_Turnos: TypTurnos;
+g_ListaTurnos: TypArrayTurnos;
 
+g_Config : Stored TypConfig;
+t_Config : TypConfig;
 
 Type TypPantalla is (
     tPntProcesoDePesaje,
     tPntMenuPrincipal,
     tPntMenuMantenimiento,
     tPntMantEnvases,
-    tPntMantProductos
+    tPntMantTurnos,
+    tPntConfiguracion
 );
 g_PantallaActiva:TypPantalla;
 
-
-Type TypTiposEnvase is (
-    tBotella01Litro,
-    tGalon,
-    tBotella02Litro,
-    tBotella20Litro
-);
-g_TipoEnvase:TypTiposEnvase;
 
 Type TypLineaProd is (
     tLProduccion01,
@@ -31,8 +26,13 @@ Type TypLineaProd is (
 );
 g_TipoLineaProd:TypLineaProd;
 
-
 g_tipoDeEnvase:string;
 
 
-
+--Variable que almacena el Id del Registro a mostrar en Mantenimiento de Datos
+g_IndexRegistro : integer := 1;
+g_ItemsPorPagina : integer := 1;
+g_PaginaActual : integer;
+g_TotalPaginas : integer;
+g_TieneDatos : BooleanType;
+g_TotalRegistros : integer;
