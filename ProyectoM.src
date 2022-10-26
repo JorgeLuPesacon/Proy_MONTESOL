@@ -9,6 +9,7 @@ program ProyectoM;
 #include Database/Envase.iri
 #include Database/Turno.iri
 #include Database/Config.iri
+#include Database/Info.iri
 #include MostrarDatosEnEtiquetas.iri
 #include Database/ModificacionesDB.iri
 #include Procedimientos.iri
@@ -36,6 +37,8 @@ begin
 	if EventKey = EnterKey then
 		if g_TipoMantenimiento=tipoMantEliminar then
             pEliminarRegistroDB(g_IdItemActual);
+        elsif g_TipoMantenimiento=tipoMantEditarInfo then
+            pActualizarRegistroInfoDB(LocalEntry);
         elsif g_TipoMantenimiento=tipoMantEditarConfig then
              if fValidarSiEsNumero(LocalEntry)=BoolTrue then
                 pActualizarTara(StringToReal(LocalEntry));
@@ -55,5 +58,4 @@ end;
 begin
     pAlmacenarDatosInicial;
     pMuestraPantallaProceso;
-    DisplayStatus("Hola Hoy");
 end ProyectoM;

@@ -4,6 +4,8 @@ if (g_TipoMantenimiento = tipoMantEliminar) then
 	PromptUser("¿Desea eliminar el registro?");
 end if;
 end;
+
+
 procedure pEliminarRegistroDB(id:integer);
 begin
 if (g_TipoMantenimiento = tipoMantEliminar) then
@@ -15,6 +17,61 @@ if (g_TipoMantenimiento = tipoMantEliminar) then
 		pDeleteItemTabla("Envase",id);
 		g_IdItemActual:=0;
 		pMuestraEnvases;
+	end if;
+end if;
+end;
+
+
+procedure pActualizarRegistroInfoDB(Valor:string);
+l_IdEnvaseTurno:integer:=0;
+begin
+if (g_TipoMantenimiento = tipoMantEditarInfo) then
+	if (g_PasoMantCamposInfo=tMantEnvase01) then
+		if (fExisteCodigoEnTabla(CONST_ENVASE_LABEL,Valor)=BoolFalse) then
+			pMostrarYLimpiar("Codigo Ingresado No Existe");
+		else
+			l_IdEnvaseTurno:=fGetIdEnvaseByCodigo(Valor);
+			pPutInfoEnvase(l_IdEnvaseTurno,g_IdBalanzaActual);
+			pMuestraInfoBalanzas;
+		end if;
+	elsif (g_PasoMantCamposInfo=tMantLote01) then
+		if (fValidaDatoVacio(Valor)=BoolTrue) then
+			pMostrarYLimpiar("El Campo Esta Vacio");
+		else
+			pPutInfoLote(Valor,g_IdBalanzaActual);
+			pMuestraInfoBalanzas;
+		end if;
+	elsif (g_PasoMantCamposInfo=tMantTurno01) then
+		if (fExisteCodigoEnTabla(CONST_TURNOS_LABEL,Valor)=BoolFalse) then
+			pMostrarYLimpiar("Codigo Ingresado No Existe");
+		else
+			l_IdEnvaseTurno:=fGetIdTurnoByCodigo(Valor);
+			pPutInfoTurno(l_IdEnvaseTurno,g_IdBalanzaActual);
+			pMuestraInfoBalanzas;
+		end if;
+	elsif (g_PasoMantCamposInfo=tMantEnvase02) then
+		if (fExisteCodigoEnTabla(CONST_ENVASE_LABEL,Valor)=BoolFalse) then
+			pMostrarYLimpiar("Codigo Ingresado No Existe");
+		else
+			l_IdEnvaseTurno:=fGetIdEnvaseByCodigo(Valor);
+			pPutInfoEnvase(l_IdEnvaseTurno,g_IdBalanzaActual);
+			pMuestraInfoBalanzas;
+		end if;
+	elsif (g_PasoMantCamposInfo=tMantLote02) then
+		if (fValidaDatoVacio(Valor)=BoolTrue) then
+			pMostrarYLimpiar("El Campo Esta Vacio");
+		else
+			pPutInfoLote(Valor,g_IdBalanzaActual);
+			pMuestraInfoBalanzas;
+		end if;
+	elsif (g_PasoMantCamposInfo=tMantTurno02) then
+		if (fExisteCodigoEnTabla(CONST_TURNOS_LABEL,Valor)=BoolFalse) then
+			pMostrarYLimpiar("Codigo Ingresado No Existe");
+		else
+			l_IdEnvaseTurno:=fGetIdTurnoByCodigo(Valor);
+			pPutInfoTurno(l_IdEnvaseTurno,g_IdBalanzaActual);
+			pMuestraInfoBalanzas;
+		end if;
 	end if;
 end if;
 end;

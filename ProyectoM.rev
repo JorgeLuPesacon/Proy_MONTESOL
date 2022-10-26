@@ -4,7 +4,7 @@
   <IndicatorModel value="1280" />
   <IndicatorVersion value="2.00" />
   <ChildAssembly value="rev1280.v306.dll" />
-  <ConfigHash value="202 207 201 133 188 8 136 195 81 246 169 175 109 137 64 187 27 56 198 29 " />
+  <ConfigHash value="49 5 112 245 207 63 171 217 50 155 91 209 177 162 172 169 87 234 32 22 " />
   <CODFile value="E:\ProyectosPesacon\Proy_Montesol\ProyectoM.cod" />
   <Config>SC.TOTAL.DP.MATCH.SOURCE#1=NO
 SC.TOTAL.SUM.INTERNAL.RESOLUTION#1=NO
@@ -1009,7 +1009,7 @@ DB.SCHEMA#4=1000,0,Id,3,4,Origen,7,40,Error,7,40,Fecha,8,8
 DB.ALIAS#4=Log
 DB.SCHEMA#5=1,0,Id,3,4,Tara,5,8
 DB.ALIAS#5=Config
-DB.SCHEMA#6=2,0,IdBalanz,2,2,IdEnvase,3,4,IdTurno,3,4,Lote,7,40
+DB.SCHEMA#6=2,0,Id,2,2,IdBalanz,2,2,IdEnvase,3,4,IdTurno,3,4,Lote,7,40
 DB.ALIAS#6=Info
 EDP.ADDRESS#1=0
 EDP.ALIAS#1=Port1

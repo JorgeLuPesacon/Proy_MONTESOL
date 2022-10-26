@@ -19,7 +19,7 @@ begin
         pLoggerDB("pPostEnvase",DBErrMsg);
         return;
     end if;
-    --pMostrarYLimpiar("Se agrego correctamente");
+    pMostrarYLimpiar("Se agrego el envase correctamente");
 end;
 
 procedure pPutEnvase(entidad : TypMantGenerico);
@@ -150,7 +150,7 @@ begin
     end loop;
 
     DbFinalize(conexion);
-    --pMostrarYLimpiar("Se listo correctamente");
+    pMostrarYLimpiar("Se listo correctamente");
 
     return listado;
 end;

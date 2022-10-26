@@ -6,6 +6,10 @@ CONST_20LITRO:string:="20LITRO";
 CONST_MAX_DB_ENVASE: integer:=1000;
 CONST_MAX_DB_TURNO: integer:=1000;
 CONST_MAX_DB_CONFIG: integer:=1;
+CONST_MAX_DB_INFO: Integer:=10;
 
 CONST_ENVASE_LABEL : string := "Envase";
 CONST_TURNOS_LABEL : string := "Turnos";
+
+CONST_ID_BALANZA_01: integer:=1;
+CONST_ID_BALANZA_02: integer:=2;

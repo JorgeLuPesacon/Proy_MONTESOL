@@ -36,3 +36,16 @@ type TypMantGenerico is record
   	PreActivo: Integer; 
   
 end record;
+
+
+type TypInfo is record
+		 Id:Integer;
+  IdBalanza: Integer;
+  IdEnvase: Integer;
+  NEnvase:String;
+   IdTurno: Integer;
+   NTurno:string;
+      Lote: String;
+end record;
+
+type TypArrayInfo is array[10] of TypInfo;

@@ -58,7 +58,19 @@ begin
     end if;
         t_Config.Tara:=4.36;
         pPostConfig(t_Config);
-        DisplayStatus("SEinserto el config"+ realtostring(t_config.tara,4,2) );
+end;
+
+procedure pAlmacenarDatosInicialInfo;
+hayDatos: BooleanType;
+begin
+    hayDatos:=fExisteDatosEnTabla("Info");
+    if (hayDatos=BoolTrue) then
+        return;
+    end if;
+        t_Info.IdBalanza:=1;
+        pPostInfo(t_Info);
+        t_Info.IdBalanza:=2;
+        pPostInfo(t_Info);
 end;
 
 
@@ -68,5 +80,5 @@ begin
 	pAlmacenarDatosInicialEnvase;
     pAlmacenarDatosInicialTurnos;
     pAlmacenarDatosInicialConfig;
-    
+    pAlmacenarDatosInicialInfo;
 end;

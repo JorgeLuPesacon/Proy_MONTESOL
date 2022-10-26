@@ -51,6 +51,7 @@ type ConfigDatabase is database ("Config")
       Tara: Real;
 end database;
 type InfoDatabase is database ("Info")
+        Id: Integer;
   IdBalanz: Integer;
   IdEnvase: Integer;
    IdTurno: Integer;
@@ -86,10 +87,11 @@ Log_Fecha    : constant integer := 4;
 Config_Id       : constant integer := 1;
 Config_Tara     : constant integer := 2;
 
-Info_IdBalanz : constant integer := 1;
-Info_IdEnvase : constant integer := 2;
-Info_IdTurno  : constant integer := 3;
-Info_Lote     : constant integer := 4;
+Info_Id       : constant integer := 1;
+Info_IdBalanz : constant integer := 2;
+Info_IdEnvase : constant integer := 3;
+Info_IdTurno  : constant integer := 4;
+Info_Lote     : constant integer := 5;
 
 
 
