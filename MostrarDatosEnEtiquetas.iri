@@ -40,3 +40,20 @@ begin
 	--end if;
 end;
 
+procedure pMuestraInfoBalanzas;
+begin
+    g_info01:=fGetInfoByIdBalanza(1);
+    g_info02:=fGetInfoByIdBalanza(2);
+    
+	--Datos en Etiquetas de la Balanza 01 Izquierda
+	--SetLabelText(lbl12,g_info01.NEnvase);
+	SetLabelText(lbl12,g_info01.NEnvase);
+	SetLabelText(lbl20,g_info01.Lote);
+	SetLabelText(lbl21,g_info01.NTurno);
+
+	--Datos en Etiquetas de la Balanza 02 Derecha
+	--SetLabelText(lbl12,g_info02.NEnvase);
+	SetLabelText(lbl13,g_info02.NEnvase);
+	SetLabelText(lbl54,g_info02.Lote);
+	SetLabelText(lbl55,g_info02.NTurno);
+end;

@@ -2,11 +2,7 @@ procedure pMuestraPantallaProceso;
 begin
     SelectScreen(2);
     g_PantallaActiva:=tPntProcesoDePesaje;
-    if g_TipoLineaProd=tLProduccion01 then
-        SetLabelText(lbl12,g_tipoDeEnvase);
-    elsif g_TipoLineaProd=tLProduccion02 then
-        SetLabelText(lbl13,g_tipoDeEnvase);
-    end if;
+    pMuestraInfoBalanzas;
     
 end;
 

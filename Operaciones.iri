@@ -20,3 +20,43 @@ elsif EventWidget=lbl33 or EventWidget=lbl42 then
 elsif EventWidget=lbl46 then
     g_TipoMantenimiento := tipoMantEditarConfig;
     pMuestraPromptEditarConfig;
+
+--Edicion de Campos de la Info Balanza 01
+
+elsif EventWidget=lbl56 or EventWidget=lbl12 then
+    g_TipoMantenimiento := tipoMantEditarInfo;
+    g_PasoMantCamposInfo := tMantEnvase01;
+    g_IdBalanzaActual:=CONST_ID_BALANZA_01;
+    pMuestraPromptEditarInfo;
+
+elsif EventWidget=lbl57 or EventWidget=lbl20 then
+    g_TipoMantenimiento := tipoMantEditarInfo;
+    g_PasoMantCamposInfo := tMantLote01;
+    g_IdBalanzaActual:=CONST_ID_BALANZA_01;
+    pMuestraPromptEditarInfo;
+
+elsif EventWidget=lbl58 or EventWidget=lbl21 then
+    g_TipoMantenimiento := tipoMantEditarInfo;
+    g_PasoMantCamposInfo := tMantTurno01;
+    g_IdBalanzaActual:=CONST_ID_BALANZA_01;
+    pMuestraPromptEditarInfo;
+
+--Edicion de Campos de la Info Balanza 02
+
+elsif EventWidget=lbl59 or EventWidget=lbl13 then
+    g_TipoMantenimiento := tipoMantEditarInfo;
+    g_PasoMantCamposInfo := tMantEnvase02;
+    g_IdBalanzaActual:=CONST_ID_BALANZA_02;
+    pMuestraPromptEditarInfo;
+
+elsif EventWidget=lbl60 or EventWidget=lbl54 then
+    g_TipoMantenimiento := tipoMantEditarInfo;
+    g_PasoMantCamposInfo := tMantLote02;
+    g_IdBalanzaActual:=CONST_ID_BALANZA_02;
+    pMuestraPromptEditarInfo;
+
+elsif EventWidget=lbl61 or EventWidget=lbl55 then
+    g_TipoMantenimiento := tipoMantEditarInfo;
+    g_PasoMantCamposInfo := tMantTurno02;
+    g_IdBalanzaActual:=CONST_ID_BALANZA_02;
+    pMuestraPromptEditarInfo;

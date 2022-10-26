@@ -210,3 +210,118 @@ begin
 		return BoolTrue;
 	end if;
 end;
+
+procedure pPutInfoEnvase(IdEnvase : integer;IdBalanza : integer);
+sql : string;
+conexion : integer;
+sResultado : SysCode;
+
+begin
+	sql:="Update Info set ";
+	sql:=sql + "IdEnvase=" + IntegerToString(IdEnvase,0);
+	sql:=sql + " where IdBalanz="+IntegerToString(IdBalanza,0);
+	sResultado := DbExec(sql, conexion);
+	if (sResultado <> SysOk) then
+		pLoggerDB("pPutInfoEnvase",DBErrMsg);
+		return;
+	end if;
+
+end;
+
+procedure pPutInfoLote(Lote : string;IdBalanza : integer);
+sql : string;
+conexion : integer;
+sResultado : SysCode;
+
+begin
+	sql:="Update Info set ";
+	sql:=sql + "Lote='" + Lote+ "' ";
+	sql:=sql + " where IdBalanz="+IntegerToString(IdBalanza,0);
+	sResultado := DbExec(sql, conexion);
+	if (sResultado <> SysOk) then
+		pLoggerDB("pPutInfoLote",DBErrMsg);
+		return;
+	end if;
+
+end;
+
+procedure pPutInfoTurno(IdTurno : integer;IdBalanza : integer);
+sql : string;
+conexion : integer;
+sResultado : SysCode;
+
+begin
+	sql:="Update Info set ";
+	sql:=sql + "IdTurno=" + IntegerToString(IdTurno,0);
+	sql:=sql + " where IdBalanz="+IntegerToString(IdBalanza,0);
+	sResultado := DbExec(sql, conexion);
+	if (sResultado <> SysOk) then
+		pLoggerDB("pPutInfoTurno",DBErrMsg);
+		return;
+	end if;
+
+end;
+
+
+function fGetIdEnvaseByCodigo(Codigo : string) : integer;
+sql : string;
+conexion : integer;
+sResultado : SysCode;
+Id_Envase : integer;
+begin
+    sql:="select Id from envase where Codigo='"+Codigo+"' limit 1";
+    sResultado := DbExec(sql, conexion);
+    --Primero verificamos que la consulta sea diferente de OK. Esto es error
+    if(sResultado<>SysOk) then 
+        pLoggerDB("fGetIdEnvaseByCodigo",DBErrMsg);
+        return Id_Envase;
+    end if;
+    
+    -- Luego verificamos que la conexión sea = 0. Eso quiere decir que no hay datos para recuperar
+    if (conexion=0) then
+        return Id_Envase;
+    end if;
+    
+    -- Caso contrario, tomamos los datos y los leemos.
+    DbColumnInt(conexion, 1, Id_Envase);
+    sResultado := DbNext(conexion);  
+    DbFinalize(conexion);
+    pMostrarYLimpiar("Se obtuvo el Envase correctamente");
+    return Id_Envase;
+end;
+
+function fGetIdTurnoByCodigo(Codigo : string) : integer;
+sql : string;
+conexion : integer;
+sResultado : SysCode;
+Id_Turno : integer;
+begin
+    sql:="select Id from Turnos where Codigo='"+Codigo+"' limit 1";
+    sResultado := DbExec(sql, conexion);
+    --Primero verificamos que la consulta sea diferente de OK. Esto es error
+    if(sResultado<>SysOk) then 
+        pLoggerDB("fGetIdTurnoByCodigo",DBErrMsg);
+        return Id_Turno;
+    end if;
+    
+    -- Luego verificamos que la conexión sea = 0. Eso quiere decir que no hay datos para recuperar
+    if (conexion=0) then
+        return Id_Turno;
+    end if;
+    
+    -- Caso contrario, tomamos los datos y los leemos.
+    DbColumnInt(conexion, 1, Id_Turno);
+    sResultado := DbNext(conexion);  
+    DbFinalize(conexion);
+    pMostrarYLimpiar("Se obtuvo el Turno correctamente");
+    return Id_Turno;
+end;
+
+function fValidaDatoVacio(valor : string):BooleanType;
+begin
+	if (len(valor)=0) then
+		return BoolTrue;
+	end if;
+	
+	return BoolFalse;
+end;

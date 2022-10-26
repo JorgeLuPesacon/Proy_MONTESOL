@@ -1,0 +1,82 @@
+procedure pPostInfo(entidad : TypInfo);
+sql : string;
+conexion : integer;
+sResultado : SysCode;
+id : integer;
+l_Nombretabla:string:="Info";
+begin
+    id := fGetNextId(l_Nombretabla,CONST_MAX_DB_INFO);
+    sql := "Insert into info (Id,IdBalanz,IdEnvase,IdTurno,Lote) values (";
+    sql := sql + IntegerToString(id, 0) + ",";
+    sql := sql + IntegerToString(entidad.IdBalanza,0) + ",";
+    sql := sql + IntegerToString(entidad.IdEnvase,0) + ",";
+    sql := sql + IntegerToString(entidad.IdTurno,0) + ",";
+    sql := sql + "'"+entidad.Lote + "')";
+    
+    sResultado := DbExec(sql, conexion);
+    if (sResultado <> SysOk) then
+        pLoggerDB("pPostInfo",DBErrMsg);
+        return;
+    end if;
+    pMostrarYLimpiar("Se agrego correctamente el Info");
+end;
+
+procedure pPutInfo(entidad : TypInfo);
+sql : string;
+conexion : integer;
+sResultado : SysCode;
+
+begin
+	sql:="Update Info set ";
+	sql:=sql + "IdBalanz=" +IntegerToString(entidad.IdBalanza,0)+ ", ";
+    sql:=sql + "IdEnvase=" +IntegerToString(entidad.IdEnvase,0)+ ", ";
+    sql:=sql + "IdTurno=" +IntegerToString(entidad.IdTurno,0)+ ", ";
+    sql:=sql + "Lote='" + entidad.Lote+ "' ";
+	sql:=sql + " where id="+IntegerToString(entidad.Id,0);
+			
+	sResultado := DbExec(sql, conexion);
+	if (sResultado <> SysOk) then
+		pLoggerDB("pPutInfo",DBErrMsg);
+		return;
+	end if;
+
+end;
+
+function fGetInfoByIdBalanza(IdBalanza:Integer) : TypInfo;
+sql : string;
+conexion : integer;
+sResultado : SysCode;
+Info : TypInfo;
+begin
+    sql:="select t1.Id,t1.IdBalanz,t1.IdEnvase,t2.Nombre,t1.IdTurno,t3.Nombre,t1.Lote";
+    sql:=sql + " from info t1";
+    sql:=sql + " left join Envase t2 on t1.IdEnvase=t2.Id";
+    sql:=sql + " left join Turnos t3 on t1.IdTurno=t3.Id";
+    sql:=sql + " where idBalanz="+IntegerToString(IdBalanza,0)+" limit 1";
+    sResultado := DbExec(sql, conexion);
+    --Primero verificamos que la consulta sea diferente de OK. Esto es error
+    if(sResultado<>SysOk) then 
+        pLoggerDB("fGetInfoByIdBalanza",DBErrMsg);
+        return Info;
+    end if;
+    
+    -- Luego verificamos que la conexión sea = 0. Eso quiere decir que no hay datos para recuperar
+    if (conexion=0) then
+        return Info;
+    end if;
+
+    -- Caso contrario, tomamos los datos y los leemos.
+    DbColumnInt(conexion, 1, Info.Id); 
+    DbColumnInt(conexion, 2, Info.IdBalanza);  
+    DbColumnInt(conexion, 3, Info.IdEnvase);  
+    DbColumnString(conexion, 4, Info.NEnvase);  
+    DbColumnInt(conexion, 5, Info.IdTurno);  
+    DbColumnString(conexion, 6, Info.NTurno);  
+    DbColumnString(conexion, 7, Info.Lote);  
+    sResultado := DbNext(conexion);  
+    DbFinalize(conexion);
+    pMostrarYLimpiar("Se obtuvo correctamente");
+    return Info;
+end;
+
+

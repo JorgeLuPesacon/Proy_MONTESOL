@@ -115,3 +115,32 @@ begin
 	SetEntry(l_entry);
 	PromptUser(l_mensaje);
 end;
+
+procedure pMuestraPromptEditarInfo;
+l_entry : string;
+l_mensaje : string;
+begin
+	if (g_TipoMantenimiento=tipoMantEditarInfo) then
+		if (g_PasoMantCamposInfo=tMantEnvase01) then
+			l_entry:="";
+			l_mensaje:="Ingrese Codigo de Envase";
+		elsif (g_PasoMantCamposInfo=tMantLote01) then
+			l_entry:="";
+			l_mensaje:="Ingrese Lote";
+		elsif (g_PasoMantCamposInfo=tMantTurno01) then
+			l_entry:="";
+			l_mensaje:="Ingrese Codigo de Turno";
+		elsif (g_PasoMantCamposInfo=tMantEnvase02) then
+			l_entry:="";
+			l_mensaje:="Ingrese Codigo de Envase";
+		elsif (g_PasoMantCamposInfo=tMantLote02) then
+			l_entry:="";
+			l_mensaje:="Ingrese Lote";
+		elsif (g_PasoMantCamposInfo=tMantTurno02) then
+			l_entry:="";
+			l_mensaje:="Ingrese Codigo de Turno";
+		end if;
+		SetEntry(l_entry);
+		PromptUser(l_mensaje);
+	end if;
+end;
