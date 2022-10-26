@@ -31,11 +31,14 @@ type TurnosDatabase is database ("Turnos")
 end database;
 type PesajeDatabase is database ("Pesaje")
         Id: Integer;
-  PesoObje: Real;
-  PesoObte: Real;
-     Fecha: DateTime;
-   IdTurno: Integer;
+  IdBalanz: Integer;
   IdEnvase: Integer;
+   IdTurno: Integer;
+      Lote: String;
+      Tara: Real;
+      Peso: Real;
+  QEnvases: Integer;
+     Fecha: DateTime;
 end database;
 type LogDatabase is database ("Log")
         Id: Integer;
@@ -46,6 +49,12 @@ end database;
 type ConfigDatabase is database ("Config")
         Id: Integer;
       Tara: Real;
+end database;
+type InfoDatabase is database ("Info")
+  IdBalanz: Integer;
+  IdEnvase: Integer;
+   IdTurno: Integer;
+      Lote: String;
 end database;
 
 Envase_Id       : constant integer := 1;
@@ -60,11 +69,14 @@ Turnos_Codigo   : constant integer := 2;
 Turnos_Nombre   : constant integer := 3;
 
 Pesaje_Id       : constant integer := 1;
-Pesaje_PesoObje : constant integer := 2;
-Pesaje_PesoObte : constant integer := 3;
-Pesaje_Fecha    : constant integer := 4;
-Pesaje_IdTurno  : constant integer := 5;
-Pesaje_IdEnvase : constant integer := 6;
+Pesaje_IdBalanz : constant integer := 2;
+Pesaje_IdEnvase : constant integer := 3;
+Pesaje_IdTurno  : constant integer := 4;
+Pesaje_Lote     : constant integer := 5;
+Pesaje_Tara     : constant integer := 6;
+Pesaje_Peso     : constant integer := 7;
+Pesaje_QEnvases : constant integer := 8;
+Pesaje_Fecha    : constant integer := 9;
 
 Log_Id       : constant integer := 1;
 Log_Origen   : constant integer := 2;
@@ -73,6 +85,11 @@ Log_Fecha    : constant integer := 4;
 
 Config_Id       : constant integer := 1;
 Config_Tara     : constant integer := 2;
+
+Info_IdBalanz : constant integer := 1;
+Info_IdEnvase : constant integer := 2;
+Info_IdTurno  : constant integer := 3;
+Info_Lote     : constant integer := 4;
 
 
 
