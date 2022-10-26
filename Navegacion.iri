@@ -1,29 +1,20 @@
-elsif EventWidget=lbl1 then
-g_tipoDeEnvase:=CONST_GALON;
-pMuestraPantallaProceso;
-
-elsif EventWidget=lbl2 then
-g_tipoDeEnvase:=CONST_01LITRO;
-pMuestraPantallaProceso;
-
-elsif EventWidget=lbl3 then
-g_tipoDeEnvase:=CONST_02LITRO;
-pMuestraPantallaProceso;
-
-elsif EventWidget=lbl4 then
-g_tipoDeEnvase:=CONST_20LITRO;
-pMuestraPantallaProceso;
-
-
 elsif EventWidget=lbl7 or EventWidget=lbl32 or 
-EventWidget=lbl41 then
-pMuestraMenuMantenimiento;
+EventWidget=lbl41  or EventWidget=lbl68 then
+pMuestraPantallaMenuMantenimiento;
 
 elsif EventWidget=lbl26 then
 pMuestraPantallaProceso;
 
 elsif EventWidget=lbl8 then
-pMuestraMantenimientoEnvases;
+g_NombreMenuMantenimiento:=CONST_ENVASE_LABEL;
+pMuestraPantallaMantenimientoEnvases;
+pMuestraEnvases;
 
 elsif EventWidget=lbl24 then
-pMuestraMantenimientoProductos;
+g_NombreMenuMantenimiento:=CONST_TURNOS_LABEL;
+pMuestraPantallaMantenimientoTurnos;
+pMuestraTurnos;
+
+elsif EventWidget=lbl22 then
+pMuestraPantallaConfiguracion;
+pMuestraConfiguracion;

@@ -4,4 +4,8 @@ CONST_02LITRO:string:="02LITRO";
 CONST_20LITRO:string:="20LITRO";
 
 CONST_MAX_DB_ENVASE: integer:=1000;
-CONST_MAX_DB_PRODUCTO: integer:=1000;
+CONST_MAX_DB_TURNO: integer:=1000;
+CONST_MAX_DB_CONFIG: integer:=1;
+
+CONST_ENVASE_LABEL : string := "Envase";
+CONST_TURNOS_LABEL : string := "Turnos";

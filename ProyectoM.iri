@@ -20,18 +20,22 @@ type EnvaseDatabase is database ("Envase")
         Id: Integer;
     Codigo: String;
     Nombre: String;
+  CorteGru: Real;
+  CorteFno: Real;
+  PreActiv: Integer;
 end database;
-type ProductoDatabase is database ("Producto")
+type TurnosDatabase is database ("Turnos")
         Id: Integer;
     Codigo: String;
     Nombre: String;
-  IdEnvase: Integer;
 end database;
 type PesajeDatabase is database ("Pesaje")
         Id: Integer;
   PesoObje: Real;
   PesoObte: Real;
      Fecha: DateTime;
+   IdTurno: Integer;
+  IdEnvase: Integer;
 end database;
 type LogDatabase is database ("Log")
         Id: Integer;
@@ -39,25 +43,36 @@ type LogDatabase is database ("Log")
      Error: String;
      Fecha: DateTime;
 end database;
+type ConfigDatabase is database ("Config")
+        Id: Integer;
+      Tara: Real;
+end database;
 
 Envase_Id       : constant integer := 1;
 Envase_Codigo   : constant integer := 2;
 Envase_Nombre   : constant integer := 3;
+Envase_CorteGru : constant integer := 4;
+Envase_CorteFno : constant integer := 5;
+Envase_PreActiv : constant integer := 6;
 
-Producto_Id       : constant integer := 1;
-Producto_Codigo   : constant integer := 2;
-Producto_Nombre   : constant integer := 3;
-Producto_IdEnvase : constant integer := 4;
+Turnos_Id       : constant integer := 1;
+Turnos_Codigo   : constant integer := 2;
+Turnos_Nombre   : constant integer := 3;
 
 Pesaje_Id       : constant integer := 1;
 Pesaje_PesoObje : constant integer := 2;
 Pesaje_PesoObte : constant integer := 3;
 Pesaje_Fecha    : constant integer := 4;
+Pesaje_IdTurno  : constant integer := 5;
+Pesaje_IdEnvase : constant integer := 6;
 
 Log_Id       : constant integer := 1;
 Log_Origen   : constant integer := 2;
 Log_Error    : constant integer := 3;
 Log_Fecha    : constant integer := 4;
+
+Config_Id       : constant integer := 1;
+Config_Tara     : constant integer := 2;
 
 
 
@@ -86,10 +101,10 @@ lbl14     : constant integer := 14;
 lbl15     : constant integer := 15;
 lbl16     : constant integer := 16;
 lbl17     : constant integer := 17;
-lbl19     : constant integer := 19;
 lbl18     : constant integer := 18;
-lbl21     : constant integer := 21;
+lbl19     : constant integer := 19;
 lbl20     : constant integer := 20;
+lbl21     : constant integer := 21;
 lbl22     : constant integer := 22;
 lbl23     : constant integer := 23;
 lbl24     : constant integer := 24;
@@ -113,8 +128,8 @@ lbl41     : constant integer := 41;
 lbl42     : constant integer := 42;
 lbl43     : constant integer := 43;
 lbl44     : constant integer := 44;
-lbl46     : constant integer := 46;
 lbl45     : constant integer := 45;
+lbl46     : constant integer := 46;
 lbl47     : constant integer := 47;
 lbl48     : constant integer := 48;
 line49    : constant integer := 49;

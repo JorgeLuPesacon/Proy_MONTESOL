@@ -5,52 +5,68 @@ begin
     if (hayDatos=BoolTrue) then
         return;
     end if;
-    t_Envase.Codigo:="E001";
-    t_Envase.Nombre:="GALON DE 40 LITROS";
-    pPostEnvase(t_Envase);
-    t_Envase.Codigo:="E002";
-    t_Envase.Nombre:="01 LITRO";
-    pPostEnvase(t_Envase);
-    t_Envase.Codigo:="E003";
-    t_Envase.Nombre:="02 LITROS";
-    pPostEnvase(t_Envase);
-    t_Envase.Codigo:="E004";
-    t_Envase.Nombre:="20 LITROS";
-    pPostEnvase(t_Envase);
+    t_MantGenerico.Codigo:="E001";
+    t_MantGenerico.Nombre:="GALON DE 40 LITROS";
+    t_MantGenerico.CorteGrueso:=40.0;
+    t_MantGenerico.CorteFino:=39.5;
+    t_MantGenerico.PreActivo:=1;
+    pPostEnvase(t_MantGenerico);
+    t_MantGenerico.Codigo:="E002";
+    t_MantGenerico.Nombre:="01 LITRO";
+    t_MantGenerico.CorteGrueso:=1.0;
+    t_MantGenerico.CorteFino:=0.99;
+    t_MantGenerico.PreActivo:=1;
+    pPostEnvase(t_MantGenerico);
+    t_MantGenerico.Codigo:="E003";
+    t_MantGenerico.Nombre:="02 LITROS";
+    t_MantGenerico.CorteGrueso:=1.98;
+    t_MantGenerico.CorteFino:=1.99;
+    t_MantGenerico.PreActivo:=1;
+    pPostEnvase(t_MantGenerico);
+    t_MantGenerico.Codigo:="E004";
+    t_MantGenerico.Nombre:="20 LITROS";
+    t_MantGenerico.CorteGrueso:=19.0;
+    t_MantGenerico.CorteFino:=19.5;
+    t_MantGenerico.PreActivo:=1;
+    pPostEnvase(t_MantGenerico);
 end;
 
-procedure pAlmacenarDatosInicialProducto;
+procedure pAlmacenarDatosInicialTurnos;
 hayDatos: BooleanType;
 begin
-    hayDatos:=fExisteDatosEnTabla("Producto");
+    hayDatos:=fExisteDatosEnTabla("Turnos");
     if (hayDatos=BoolTrue) then
         return;
     end if;
-        t_Producto.Codigo:="INS001";
-        t_Producto.Nombre:="ARENA";
-        t_Producto.IdEnvase:=1;
-        pPostProducto(t_Producto);
-        t_Producto.Codigo:="INS002";
-        t_Producto.Nombre:="CEMENTO";
-        t_Producto.IdEnvase:=2;
-        pPostProducto(t_Producto);
-        t_Producto.Codigo:="INS003";
-        t_Producto.Nombre:="ESPEZANTE";
-        t_Producto.IdEnvase:=3;
-        pPostProducto(t_Producto);
-        t_Producto.Codigo:="INS004";
-        t_Producto.Nombre:="AGUA";
-        t_Producto.IdEnvase:=2;
-        pPostProducto(t_Producto);
-        t_Producto.Codigo:="INS005";
-        t_Producto.Nombre:="COLORANTE";
-        t_Producto.IdEnvase:=4;
-        pPostProducto(t_Producto);
+        t_MantGenerico.Codigo:="T001";
+        t_MantGenerico.Nombre:="TURNO MAÑANA";
+        pPostTurnos(t_MantGenerico);
+        t_MantGenerico.Codigo:="T002";
+        t_MantGenerico.Nombre:="TURNO TARDE";
+        pPostTurnos(t_MantGenerico);
+        t_MantGenerico.Codigo:="T003";
+        t_MantGenerico.Nombre:="TURNO NOCHE";
+        pPostTurnos(t_MantGenerico);
 end;
+
+procedure pAlmacenarDatosInicialConfig;
+hayDatos: BooleanType;
+begin
+    hayDatos:=fExisteDatosEnTabla("Config");
+    if (hayDatos=BoolTrue) then
+        return;
+    end if;
+        t_Config.Tara:=4.36;
+        pPostConfig(t_Config);
+        DisplayStatus("SEinserto el config"+ realtostring(t_config.tara,4,2) );
+end;
+
+
 
 procedure pAlmacenarDatosInicial;
 begin
 	pAlmacenarDatosInicialEnvase;
-    pAlmacenarDatosInicialProducto;
+    pAlmacenarDatosInicialTurnos;
+    pAlmacenarDatosInicialConfig;
     
 end;

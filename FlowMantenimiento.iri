@@ -1,0 +1,31 @@
+procedure pMantenimientoDatos(userInput : string);
+begin
+if (g_PasoMantenimiento = tMantInicio) then
+	pMuestraPromptMantenimiento;
+	g_PasoMantenimiento := tMantCodigo;
+elsif (g_PasoMantenimiento = tMantCodigo) then
+	pGuardarTemporal(userInput);
+	pMuestraPromptMantenimiento;
+	g_PasoMantenimiento := tMantNombre;
+elsif (g_PasoMantenimiento = tMantNombre) then
+	pGuardarTemporal(userInput);
+    if g_PantallaActiva=tPntMantTurnos then
+    	pGuardarTemporal(userInput);
+	    pGuardaMantenimiento;
+    else
+	    pMuestraPromptMantenimiento;
+	    g_PasoMantenimiento := tMantCorteGrueso;
+    end if;
+elsif (g_PasoMantenimiento = tMantCorteGrueso) then
+	pGuardarTemporal(userInput);
+	pMuestraPromptMantenimiento;
+	g_PasoMantenimiento := tMantCorteFino;
+elsif (g_PasoMantenimiento = tMantCorteFino) then
+	pGuardarTemporal(userInput);
+	pMuestraPromptMantenimiento;
+	g_PasoMantenimiento := tMantPreActivo;
+elsif (g_PasoMantenimiento = tMantPreActivo) then
+	pGuardarTemporal(userInput);
+    pGuardaMantenimiento;
+end if;
+end;

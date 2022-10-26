@@ -1,7 +1,22 @@
-elsif EventWidget=lbl21 then
-pMuestraMenuPrincipal;
-g_TipoLineaProd:=tLProduccion01;
+--Programacion del Boton Agregar en Pantalla Mantenimientos Datos y en Pantalla Mantenimiento Datos Vacios
 
-elsif EventWidget=lbl19 then
-pMuestraMenuPrincipal;
-g_TipoLineaProd:=tLProduccion02;
+elsif EventWidget=lbl35 or EventWidget=lbl44 then
+	g_TipoMantenimiento := tipoMantAgregar;
+	g_PasoMantenimiento := tMantInicio;
+    pMantenimientoDatos("");
+    
+--Programacion del Boton Editar en Pantalla Mantenimientos Datos
+
+elsif EventWidget=lbl34 or EventWidget=lbl43 then
+    g_TipoMantenimiento := tipoMantEditar;
+    g_PasoMantenimiento := tMantInicio;
+    pMantenimientoDatos("");
+    
+elsif EventWidget=lbl33 or EventWidget=lbl42 then
+	g_TipoMantenimiento := tipoMantEliminar;
+	--Se pasa como parametro el Id que está en pantalla en ese momento
+	pMuestraPromptEliminar;
+
+elsif EventWidget=lbl46 then
+    g_TipoMantenimiento := tipoMantEditarConfig;
+    pMuestraPromptEditarConfig;

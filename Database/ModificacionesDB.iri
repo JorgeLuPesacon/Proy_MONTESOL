@@ -1,0 +1,20 @@
+Procedure pMuestraPromptEliminar;
+begin
+if (g_TipoMantenimiento = tipoMantEliminar) then
+	PromptUser("¿Desea eliminar el registro?");
+end if;
+end;
+procedure pEliminarRegistroDB(id:integer);
+begin
+if (g_TipoMantenimiento = tipoMantEliminar) then
+	if (g_NombreMenuMantenimiento = CONST_TURNOS_LABEL) then
+		pDeleteItemTabla("Turnos",id);
+		g_IdItemActual:=0;
+		pMuestraTurnos;
+	elsif (g_NombreMenuMantenimiento = CONST_ENVASE_LABEL) then
+		pDeleteItemTabla("Envase",id);
+		g_IdItemActual:=0;
+		pMuestraEnvases;
+	end if;
+end if;
+end;

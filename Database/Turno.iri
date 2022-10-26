@@ -1,131 +1,120 @@
-procedure pPostEnvase(entidad : TypMantGenerico);
+procedure pPostTurnos(entidad : TypMantGenerico);
 sql : string;
 conexion : integer;
 sResultado : SysCode;
 id : integer;
-l_Nombretabla:string:="Envase";
+l_Nombretabla:string:="Turnos";
 begin
-    id := fGetNextId(l_Nombretabla,CONST_MAX_DB_ENVASE);
-    sql := "Insert into Envase (Id, Codigo, Nombre, CorteGru, CorteFno, PreActiv) values (";
+    id := fGetNextId(l_Nombretabla,CONST_MAX_DB_TURNO);
+    sql := "Insert into Turnos (Id, Codigo, Nombre) values (";
     sql := sql + IntegerToString(id, 0) + ",";
     sql := sql + "'"+ entidad.Codigo + "', ";
-    sql := sql + "'" +entidad.Nombre + "',";
-    sql := sql + RealToString(entidad.CorteGrueso,4,2) + ",";
-    sql := sql + RealToString(entidad.CorteFino,4,2) + ",";
-    sql := sql + IntegerToString(entidad.PreActivo,0) + ")";
-
+    sql := sql + "'" +entidad.Nombre + "')";
+    
     sResultado := DbExec(sql, conexion);
     if (sResultado <> SysOk) then
-        pLoggerDB("pPostEnvase",DBErrMsg);
+        pLoggerDB("pPostTurnos",DBErrMsg);
         return;
     end if;
     --pMostrarYLimpiar("Se agrego correctamente");
 end;
 
-procedure pPutEnvase(entidad : TypMantGenerico);
+procedure pPutTurnos(entidad : TypMantGenerico);
 sql : string;
 conexion : integer;
 sResultado : SysCode;
 
 begin
-	sql:="Update Envase set ";
-	sql:=sql + "Codigo='" + entidad.Codigo+ "',";
-	sql:=sql + "Nombre='" + entidad.Nombre + "', ";
-    sql:=sql + "CorteGru="+RealToString(entidad.CorteGrueso,4,2) + ",";
-    sql:=sql + "CorteFno="+RealToString(entidad.CorteFino,4,2) + ",";
-    sql:=sql + "PreActiv="+IntegerToString(entidad.PreActivo,0) + " ";
-	sql:=sql + "where id="+IntegerToString(g_IdItemActual,0);
+	sql:="Update Turnos set ";
+	sql:=sql + "codigo='" + entidad.Codigo+ "',";
+	sql:=sql + "nombre='" + entidad.Nombre + "' ";
+    sql:=sql + " where id="+IntegerToString(g_IdItemActual,0);
 			
 	sResultado := DbExec(sql, conexion);
 	if (sResultado <> SysOk) then
-		pLoggerDB("pPutEnvase",DBErrMsg);
+		pLoggerDB("pPutTurnos",DBErrMsg);
 		return;
 	end if;
+
 end;
 
-
-function fGetEnvaseByCodigo(Codigo : string) : TypEnvase;
+function fGetTurnoByCodigo(Codigo : string) : TypTurnos;
 sql : string;
 conexion : integer;
 sResultado : SysCode;
-l_Envase : TypEnvase;
+Turnos : TypTurnos;
 begin
-    sql:="select * from envase where Codigo='"+Codigo+"' limit 1";
+    sql:="select * from Turnos where Codigo='"+Codigo+"' limit 1";
     sResultado := DbExec(sql, conexion);
     --Primero verificamos que la consulta sea diferente de OK. Esto es error
     if(sResultado<>SysOk) then 
-        pLoggerDB("fGetEnvaseByCodigo",DBErrMsg);
-        return l_Envase;
+        pLoggerDB("fGetTurnoByCodigo",DBErrMsg);
+        return Turnos;
     end if;
     
     -- Luego verificamos que la conexión sea = 0. Eso quiere decir que no hay datos para recuperar
     if (conexion=0) then
-        return l_Envase;
+        return Turnos;
     end if;
-    
+
     -- Caso contrario, tomamos los datos y los leemos.
-    DbColumnInt(conexion, 1, l_Envase.Id);
-    DbColumnString(conexion, 2, l_Envase.Codigo);
-    DbColumnString(conexion, 3, l_Envase.Nombre);
-    DbColumnReal(conexion,4,l_Envase.CorteGrueso);
-    DbColumnReal(conexion,5, l_Envase.CorteFino);
-    DbColumnInt(conexion,6, l_Envase.PreActivo);
+    DbColumnInt(conexion, 1, Turnos.Id); 
+    DbColumnString(conexion, 2, Turnos.Codigo); 
+    DbColumnString(conexion, 3, Turnos.Nombre);  
+    
     sResultado := DbNext(conexion);  
     DbFinalize(conexion);
     pMostrarYLimpiar("Se obtuvo correctamente");
-    return l_Envase;
+    return Turnos;
 end;
 
 
-function fGetEnvase(Id : integer) : TypEnvase;
+function fGetTurno(Id : integer) : TypTurnos;
 sql : string;
 conexion : integer;
 sResultado : SysCode;
-l_Envase : TypEnvase;
+Turno : TypTurnos;
 begin
-    sql:="select * from envase where id = ";
+    sql:="select * from turnos where id = ";
     sql:=sql + IntegerToString(Id, 0);
 
     sResultado := DbExec(sql, conexion);
     --Primero verificamos que la consulta sea diferente de OK. Esto es error
     if(sResultado<>SysOk) then 
-        pLoggerDB("fGetEnvase",DBErrMsg);
-        return l_Envase;
+        pLoggerDB("fGetTurno",DBErrMsg);
+        return Turno;
     end if;
     
     -- Luego verificamos que la conexión sea = 0. Eso quiere decir que no hay datos para recuperar
     if (conexion=0) then
-        return l_Envase;
+        return Turno;
     end if;
 
     -- Caso contrario, tomamos los datos y los leemos.
-    DbColumnInt(conexion, 1, l_Envase.Id); 
-    DbColumnString(conexion, 2, l_Envase.Codigo); 
-    DbColumnString(conexion, 3, l_Envase.Nombre);  
-    DbColumnReal(conexion,4,l_Envase.CorteGrueso);
-    DbColumnReal(conexion,5,l_Envase.CorteFino);
-    DbColumnInt(conexion,6,l_envase.PreActivo);
+    DbColumnInt(conexion, 1, Turno.Id); 
+    DbColumnString(conexion, 2, Turno.Codigo); 
+    DbColumnString(conexion, 3, Turno.Nombre);  
     sResultado := DbNext(conexion);  
     DbFinalize(conexion);
     pMostrarYLimpiar("Se obtuvo correctamente");
-    return l_Envase;
+    return Turno;
 end;
 
 
-function fListaEnvase : TypArrayEnvases;
+function fListaTurnos : TypArrayTurnos;
 sql : string;
 conexion : integer;
 sResultado : SysCode;
-listado : TypArrayEnvases;
+listado : TypArrayTurnos;
 indice : integer;
 begin
-    sql := "select * from Envase limit "+IntegerToString(g_ItemsPorPagina,0);
+    sql := "select * from Turnos limit "+IntegerToString(g_ItemsPorPagina,0);
     sql :=sql + " Offset "+IntegerToString(g_PaginaActual - 1, 0);
 
     sResultado := DbExec(sql, conexion);
     --Primero verificamos que la consulta sea diferente de OK. Esto es error
     if(sResultado<>SysOk) then 
-        pLoggerDB("fListaEnvase",DBErrMsg);
+        pLoggerDB("fListaTurnos",DBErrMsg);
         return listado;
     end if;
     
@@ -143,9 +132,6 @@ begin
         DbColumnInt(conexion,1,listado[indice].Id); 
         DbColumnString(conexion,2,listado[indice].Codigo); 
         DbColumnString(conexion,3,listado[indice].Nombre);
-        DbColumnReal(conexion,4,listado[indice].CorteGrueso);
-        DbColumnReal(conexion,5,listado[indice].CorteFino);
-        DbColumnInt(conexion,6,listado[indice].PreActivo);
         sResultado := DbNext(conexion);  
     end loop;
 
