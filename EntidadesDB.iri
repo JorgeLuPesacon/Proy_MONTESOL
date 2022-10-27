@@ -49,3 +49,18 @@ type TypInfo is record
 end record;
 
 type TypArrayInfo is array[10] of TypInfo;
+
+
+type TypPesaje is record
+        Id: Integer;
+  IdBalanza: Integer;
+  IdEnvase: Integer;
+   IdTurno: Integer;
+      Lote: String;
+      Tara: Real;
+      Peso: Real;
+  QEnvases: Integer;
+     Fecha: DateTime;
+end record;
+
+type TypArrayPesaje is array[10] of TypPesaje;
