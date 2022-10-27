@@ -1,0 +1,19 @@
+handler DigInS0B3Activate;       --inicio ensaque 1
+begin
+    IniciarProceso(CONST_ID_BALANZA_01);
+end;
+
+handler DigInS0B7Activate;       --fin ensaque 1
+begin
+    IniciarProceso(CONST_ID_BALANZA_02);
+end;
+
+handler DigInS0B4Activate;       -- inicio ensaque 2
+begin
+    DetenerProceso(CONST_ID_BALANZA_01);
+end;
+
+handler DigInS0B8Activate;       --fin ensaque 2
+begin
+    DetenerProceso(CONST_ID_BALANZA_02);
+end;

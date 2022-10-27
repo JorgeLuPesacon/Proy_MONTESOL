@@ -1,0 +1,49 @@
+procedure IniciarProceso(numBal : integer);
+infoBalanza : TypInfo;
+infoEnvase : TypEnvase;
+begin
+    if (g_ProcesoPesaje[numBal] = 1) then
+        pMostrarYLimpiar("Balanza ya iniciada");
+        return;
+    end if;
+
+    infoBalanza := fGetInfoByIdBalanza(numBal);
+    if (infoBalanza.idEnvase = 0 or infoBalanza.idTurno = 0 or infoBalanza.Lote = "") then
+        pMostrarYLimpiar("Debe llenar datos para iniciar");
+        return;
+    end if;
+
+    infoEnvase := fGetEnvase(infoBalanza.idEnvase);
+    if (numBal = CONST_ID_BALANZA_01) then
+        SetSPValue(1, infoEnvase.corteGrueso);
+        SetSPValue(2, infoEnvase.corteFino);
+        SetDigOut(0, 1, 1);
+        EnableSP(1);
+        DisableSP(2);
+    elsif (numBal = CONST_ID_BALANZA_02) then
+        EnableSP(3);
+        EnableSP(4);
+    end if;
+end;
+
+procedure DetenerProceso(numBal : integer);
+begin
+    if (g_ProcesoPesaje[numBal] = 1) then
+        if (numBal = CONST_ID_BALANZA_01) then
+            DisableSP(1);
+            DisableSP(2);
+        elsif (numBal = CONST_ID_BALANZA_02) then
+            DisableSP(3);
+            DisableSP(4);
+        end if;
+    end if;
+end;
+
+procedure GuardarPeso(numBal : integer);
+begin
+    return;
+    -- Insert a la tabla pesaje
+    -- los datos de infoBalanza de la balanza numBal
+    -- Agregar el peso
+    -- Agregar la fecha y hora de grabado
+end;

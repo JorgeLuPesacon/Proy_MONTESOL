@@ -16,6 +16,10 @@ program ProyectoM;
 #include FlowMantenimiento.iri
 #include NombrePantallas.iri
 #include DatosPorDefectos.iri
+#include Proceso.iri
+#include Handlers/IOHandlers.iri
+#include Handlers/SetPointHandlers.iri
+#include Handlers/TimerHandlers.iri
 
 #include NavegacionFlechasFisicas.iri
 
@@ -56,6 +60,14 @@ end;
 
 
 begin
+    DisableSP(1);
+    DisableSP(2);
+    DisableSP(3);
+    DisableSP(4);
+    SetDigOut(0, 1, 0);
+    SetDigOut(0, 2, 0);
+    SetDigOut(0, 5, 0);
+    SetDigOut(0, 6, 0);
     pAlmacenarDatosInicial;
     pMuestraPantallaProceso;
 end ProyectoM;

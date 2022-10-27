@@ -1,0 +1,17 @@
+handler SP1Trip;
+begin
+    DisableSP(1);
+    SetDigOut(0, 1, 0);
+    EnableSP(2);
+    SetDigOut(0, 2, 1);
+end;
+
+
+handler SP2Trip;
+begin
+    DisableSP(2);
+    SetDigOut(0, 2, 0);
+    SetTimer(2, 50);
+    SetTimerMode(2, TimerOneShot);
+    StartTimer(2);
+end;

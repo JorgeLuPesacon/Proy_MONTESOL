@@ -86,3 +86,6 @@ g_NombreMenuMantenimiento:string;
 g_IdItemActual:integer;
 
 g_IdBalanzaActual:integer;
+
+type typArrayInt is array[2] of integer;
+g_ProcesoPesaje : typArrayInt;  -- 1: Iniciado, 0: Detenido
