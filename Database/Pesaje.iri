@@ -1,0 +1,26 @@
+procedure pPostPesaje(entidad : TypPesaje);
+sql : string;
+conexion : integer;
+sResultado : SysCode;
+id : integer;
+l_Nombretabla:string:="Pesaje";
+begin
+    id := fGetNextId(l_Nombretabla,CONST_MAX_DB_PESAJE);
+    sql := "Insert into Pesaje (Id,IdBalanz,IdEnvase,IdTurno,Lote,Tara,Peso,QEnvases,Fecha) values (";
+    sql := sql + IntegerToString(id, 0) + ",";
+    sql := sql + IntegerToString(entidad.IdBalanza,0) + ",";
+    sql := sql + IntegerToString(entidad.IdEnvase,0) + ",";
+    sql := sql + IntegerToString(entidad.IdTurno,0) + ",";
+    sql := sql + " '"+entidad.Lote + "',";
+    sql := sql + RealToString(entidad.Tara,4,2) + ",";
+    sql := sql + RealToString(entidad.Peso,4,2) + ",";
+    sql := sql + IntegerToString(entidad.QEnvases,0) + ",";
+    sql := sql + DTToString(SystemTime) + ")";
+        
+    sResultado := DbExec(sql, conexion);
+    if (sResultado <> SysOk) then
+        pLoggerDB("pPostPesaje",DBErrMsg);
+        return;
+    end if;
+    pMostrarYLimpiar("Se agrego correctamente los datos de Pesaje");
+end;

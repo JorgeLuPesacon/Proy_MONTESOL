@@ -1,4 +1,4 @@
 handler Timer2Trip;
 begin
-    GuardarPeso(CONST_ID_BALANZA_01);
+    pGuardarPeso(CONST_ID_BALANZA_01);
 end;

@@ -15,6 +15,10 @@ t_Info : TypInfo;
 g_info01 : Stored TypInfo;
 g_info02 : Stored TypInfo;
 
+g_Pesaje: Stored TypPesaje;
+t_Pesaje: TypPesaje;
+g_ListaPesaje: TypArrayPesaje;
+
 
 Type TypPantalla is (
     tPntProcesoDePesaje,

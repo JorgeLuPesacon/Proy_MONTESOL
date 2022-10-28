@@ -39,9 +39,24 @@ begin
     end if;
 end;
 
-procedure GuardarPeso(numBal : integer);
+procedure pGuardarPeso(numBal : integer);
+infoBalanza : TypInfo;
+t_pesaje : TypPesaje;
 begin
-    return;
+    infoBalanza:= fGetInfoByIdBalanza(numBal);
+    if (infoBalanza.idEnvase = 0 or infoBalanza.idTurno = 0 or infoBalanza.Lote = "") then
+        pMostrarYLimpiar("Debe llenar todos los datos para guardar");
+        return;
+    end if;
+
+    t_pesaje.IdBalanza:=numBal;
+    t_pesaje.IdEnvase:=infoBalanza.IdEnvase;
+    t_pesaje.IdTurno:=infoBalanza.IdTurno;
+    t_pesaje.Lote:=infoBalanza.Lote;
+    GetGross(1,Primary,t_pesaje.Peso);
+    t_pesaje.Fecha:=SystemTime;
+    pPostPesaje(t_pesaje);
+
     -- Insert a la tabla pesaje
     -- los datos de infoBalanza de la balanza numBal
     -- Agregar el peso

@@ -10,6 +10,7 @@ program ProyectoM;
 #include Database/Turno.iri
 #include Database/Config.iri
 #include Database/Info.iri
+#include Database/Pesaje.iri
 #include MostrarDatosEnEtiquetas.iri
 #include Database/ModificacionesDB.iri
 #include Procedimientos.iri
@@ -29,8 +30,8 @@ handler widgetClicked;
 begin
 	if 1 = 0 then
 		return;
-	#include Navegacion.iri
-    #include Operaciones.iri
+	#include Touch/Navegacion.iri
+    #include Touch/Operaciones.iri
     end if;
 end;
 

@@ -60,3 +60,4 @@ elsif EventWidget=lbl61 or EventWidget=lbl55 then
     g_PasoMantCamposInfo := tMantTurno02;
     g_IdBalanzaActual:=CONST_ID_BALANZA_02;
     pMuestraPromptEditarInfo;
+
