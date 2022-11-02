@@ -1,4 +1,6 @@
 -- Scale Aliases
+Scale1    : constant integer := 1;
+Scale2    : constant integer := 2;
 
 -- Digital I/O Aliases
 DIOCRD0   : constant integer := 0;
@@ -22,7 +24,8 @@ type EnvaseDatabase is database ("Envase")
     Nombre: String;
   CorteGru: Real;
   CorteFno: Real;
-  PreActiv: Integer;
+  Objetivo: Real;
+      Tara: Real;
 end database;
 type TurnosDatabase is database ("Turnos")
         Id: Integer;
@@ -56,6 +59,9 @@ type InfoDatabase is database ("Info")
   IdEnvase: Integer;
    IdTurno: Integer;
       Lote: String;
+      Tara: Real;
+      Peso: Real;
+  Cantidad: Integer;
 end database;
 
 Envase_Id       : constant integer := 1;
@@ -63,7 +69,8 @@ Envase_Codigo   : constant integer := 2;
 Envase_Nombre   : constant integer := 3;
 Envase_CorteGru : constant integer := 4;
 Envase_CorteFno : constant integer := 5;
-Envase_PreActiv : constant integer := 6;
+Envase_Objetivo : constant integer := 6;
+Envase_Tara     : constant integer := 7;
 
 Turnos_Id       : constant integer := 1;
 Turnos_Codigo   : constant integer := 2;
@@ -92,6 +99,9 @@ Info_IdBalanz : constant integer := 2;
 Info_IdEnvase : constant integer := 3;
 Info_IdTurno  : constant integer := 4;
 Info_Lote     : constant integer := 5;
+Info_Tara     : constant integer := 6;
+Info_Peso     : constant integer := 7;
+Info_Cantidad : constant integer := 8;
 
 
 
@@ -108,10 +118,21 @@ TCPC2     : constant string := "TCPC2";
 TCPC3     : constant string := "TCPC3";
 
 -- Setpoint Aliases
+SP1       : constant integer :=1;
+SP2       : constant integer :=2;
+SP3       : constant integer :=3;
+SP4       : constant integer :=4;
 
 -- Widget Aliases
+sym1      : constant integer := 1;
+sym2      : constant integer := 2;
+sym3      : constant integer := 3;
+sym4      : constant integer := 4;
+lbl5      : constant integer := 5;
+lbl6      : constant integer := 6;
 lbl7      : constant integer := 7;
 lbl8      : constant integer := 8;
+lbl9      : constant integer := 9;
 bar10     : constant integer := 10;
 bar11     : constant integer := 11;
 lbl12     : constant integer := 12;
@@ -171,6 +192,11 @@ lbl65     : constant integer := 65;
 lbl66     : constant integer := 66;
 lbl67     : constant integer := 67;
 lbl68     : constant integer := 68;
+lbl69     : constant integer := 69;
+lbl70     : constant integer := 70;
+lbl71     : constant integer := 71;
+lbl72     : constant integer := 72;
+lbl73     : constant integer := 73;
 
 USBPRN    : constant string := "USBPRN";
 ADVPRN    : constant string := "ADVPRN";

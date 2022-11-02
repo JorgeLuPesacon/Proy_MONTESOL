@@ -6,13 +6,14 @@ id : integer;
 l_Nombretabla:string:="Envase";
 begin
     id := fGetNextId(l_Nombretabla,CONST_MAX_DB_ENVASE);
-    sql := "Insert into Envase (Id, Codigo, Nombre, CorteGru, CorteFno, PreActiv) values (";
+    sql := "Insert into Envase (Id, Codigo, Nombre, CorteGru, CorteFno, Objetivo, Tara) values (";
     sql := sql + IntegerToString(id, 0) + ",";
     sql := sql + "'"+ entidad.Codigo + "', ";
     sql := sql + "'" +entidad.Nombre + "',";
     sql := sql + RealToString(entidad.CorteGrueso,4,2) + ",";
     sql := sql + RealToString(entidad.CorteFino,4,2) + ",";
-    sql := sql + IntegerToString(entidad.PreActivo,0) + ")";
+    sql := sql + RealToString(entidad.Objetivo,4,2) + ",";
+    sql := sql + RealToString(entidad.Tara,4,2) + ")";
 
     sResultado := DbExec(sql, conexion);
     if (sResultado <> SysOk) then
@@ -33,7 +34,8 @@ begin
 	sql:=sql + "Nombre='" + entidad.Nombre + "', ";
     sql:=sql + "CorteGru="+RealToString(entidad.CorteGrueso,4,2) + ",";
     sql:=sql + "CorteFno="+RealToString(entidad.CorteFino,4,2) + ",";
-    sql:=sql + "PreActiv="+IntegerToString(entidad.PreActivo,0) + " ";
+    sql:=sql + "Objetivo="+RealToString(entidad.Objetivo,0,2) + ", ";
+    sql:=sql + "Tara="+RealToString(entidad.Tara,0,2) + " ";
 	sql:=sql + "where id="+IntegerToString(g_IdItemActual,0);
 			
 	sResultado := DbExec(sql, conexion);
@@ -69,7 +71,8 @@ begin
     DbColumnString(conexion, 3, l_Envase.Nombre);
     DbColumnReal(conexion,4,l_Envase.CorteGrueso);
     DbColumnReal(conexion,5, l_Envase.CorteFino);
-    DbColumnInt(conexion,6, l_Envase.PreActivo);
+    DbColumnReal(conexion,6, l_Envase.Objetivo);
+    DbColumnReal(conexion,7, l_Envase.Tara);
     sResultado := DbNext(conexion);  
     DbFinalize(conexion);
     pMostrarYLimpiar("Se obtuvo correctamente");
@@ -104,7 +107,8 @@ begin
     DbColumnString(conexion, 3, l_Envase.Nombre);  
     DbColumnReal(conexion,4,l_Envase.CorteGrueso);
     DbColumnReal(conexion,5,l_Envase.CorteFino);
-    DbColumnInt(conexion,6,l_envase.PreActivo);
+    DbColumnReal(conexion,6,l_envase.Objetivo);
+    DbColumnReal(conexion,7,l_envase.Tara);
     sResultado := DbNext(conexion);  
     DbFinalize(conexion);
     pMostrarYLimpiar("Se obtuvo correctamente");
@@ -145,7 +149,8 @@ begin
         DbColumnString(conexion,3,listado[indice].Nombre);
         DbColumnReal(conexion,4,listado[indice].CorteGrueso);
         DbColumnReal(conexion,5,listado[indice].CorteFino);
-        DbColumnInt(conexion,6,listado[indice].PreActivo);
+        DbColumnReal(conexion,6,listado[indice].Objetivo);
+        DbColumnReal(conexion,7,listado[indice].Tara);
         sResultado := DbNext(conexion);  
     end loop;
 

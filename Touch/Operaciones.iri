@@ -24,40 +24,63 @@ elsif EventWidget=lbl46 then
 --Edicion de Campos de la Info Balanza 01
 
 elsif EventWidget=lbl56 or EventWidget=lbl12 then
-    g_TipoMantenimiento := tipoMantEditarInfo;
-    g_PasoMantCamposInfo := tMantEnvase01;
-    g_IdBalanzaActual:=CONST_ID_BALANZA_01;
-    pMuestraPromptEditarInfo;
+    if (g_ProcesoPesaje[1] = 0) then
+        g_TipoMantenimiento := tipoMantEditarInfo;
+        g_PasoMantCamposInfo := tMantEnvase01;
+        g_IdBalanzaActual:=CONST_ID_BALANZA_01;
+        pMuestraPromptEditarInfo;
+    else
+        pMostrarYLimpiar("Proceso en curso...");
+    end if;
 
 elsif EventWidget=lbl57 or EventWidget=lbl20 then
-    g_TipoMantenimiento := tipoMantEditarInfo;
-    g_PasoMantCamposInfo := tMantLote01;
-    g_IdBalanzaActual:=CONST_ID_BALANZA_01;
-    pMuestraPromptEditarInfo;
+    if (g_ProcesoPesaje[1] = 0) then
+        g_TipoMantenimiento := tipoMantEditarInfo;
+        g_PasoMantCamposInfo := tMantLote01;
+        g_IdBalanzaActual:=CONST_ID_BALANZA_01;
+        pMuestraPromptEditarInfo;
+    else
+        pMostrarYLimpiar("Proceso en curso...");
+    end if;
 
 elsif EventWidget=lbl58 or EventWidget=lbl21 then
-    g_TipoMantenimiento := tipoMantEditarInfo;
-    g_PasoMantCamposInfo := tMantTurno01;
-    g_IdBalanzaActual:=CONST_ID_BALANZA_01;
-    pMuestraPromptEditarInfo;
-
+    if (g_ProcesoPesaje[1] = 0) then
+        g_TipoMantenimiento := tipoMantEditarInfo;
+        g_PasoMantCamposInfo := tMantTurno01;
+        g_IdBalanzaActual:=CONST_ID_BALANZA_01;
+        pMuestraPromptEditarInfo;
+    else
+        pMostrarYLimpiar("Proceso en curso...");
+    end if;
 --Edicion de Campos de la Info Balanza 02
 
 elsif EventWidget=lbl59 or EventWidget=lbl13 then
-    g_TipoMantenimiento := tipoMantEditarInfo;
-    g_PasoMantCamposInfo := tMantEnvase02;
-    g_IdBalanzaActual:=CONST_ID_BALANZA_02;
-    pMuestraPromptEditarInfo;
+    if (g_ProcesoPesaje[2] = 0) then
+        g_TipoMantenimiento := tipoMantEditarInfo;
+        g_PasoMantCamposInfo := tMantEnvase02;
+        g_IdBalanzaActual:=CONST_ID_BALANZA_02;
+        pMuestraPromptEditarInfo;
+    else
+        pMostrarYLimpiar("Proceso en curso...");
+    end if;
 
 elsif EventWidget=lbl60 or EventWidget=lbl54 then
-    g_TipoMantenimiento := tipoMantEditarInfo;
-    g_PasoMantCamposInfo := tMantLote02;
-    g_IdBalanzaActual:=CONST_ID_BALANZA_02;
-    pMuestraPromptEditarInfo;
+    if (g_ProcesoPesaje[2] = 0) then
+        g_TipoMantenimiento := tipoMantEditarInfo;
+        g_PasoMantCamposInfo := tMantLote02;
+        g_IdBalanzaActual:=CONST_ID_BALANZA_02;
+        pMuestraPromptEditarInfo;
+    else
+        pMostrarYLimpiar("Proceso en curso...");
+    end if;
 
 elsif EventWidget=lbl61 or EventWidget=lbl55 then
-    g_TipoMantenimiento := tipoMantEditarInfo;
-    g_PasoMantCamposInfo := tMantTurno02;
-    g_IdBalanzaActual:=CONST_ID_BALANZA_02;
-    pMuestraPromptEditarInfo;
+    if (g_ProcesoPesaje[2] = 0) then
+        g_TipoMantenimiento := tipoMantEditarInfo;
+        g_PasoMantCamposInfo := tMantTurno02;
+        g_IdBalanzaActual:=CONST_ID_BALANZA_02;
+        pMuestraPromptEditarInfo;
+    else
+        pMostrarYLimpiar("Proceso en curso...");
+    end if;
 

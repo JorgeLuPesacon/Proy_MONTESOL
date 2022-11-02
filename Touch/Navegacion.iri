@@ -18,3 +18,11 @@ pMuestraTurnos;
 elsif EventWidget=lbl22 then
 pMuestraPantallaConfiguracion;
 pMuestraConfiguracion;
+
+elsif EventWidget=lbl5 then
+pMuestraPantallaConfiguracion;
+pMuestraConfiguracion;
+
+elsif EventWidget=lbl69 then
+pMuestraPantallaConfiguracion;
+pMuestraConfiguracion;

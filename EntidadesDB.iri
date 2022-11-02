@@ -4,7 +4,8 @@ type TypEnvase is record
 	Nombre: string;
   	CorteGrueso: Real;
   	CorteFino: Real;
-  	PreActivo: Integer; 
+  	Tara: Real; 
+	Objetivo: Real;
 end record;
 
 type TypArrayEnvases is array[10] of TypEnvase;
@@ -33,34 +34,37 @@ type TypMantGenerico is record
 	Nombre: string;
   	CorteGrueso: Real;
   	CorteFino: Real;
-  	PreActivo: Integer; 
-  
+  	Objetivo: Real;
+	Tara: Real;
 end record;
 
 
 type TypInfo is record
-		 Id:Integer;
-  IdBalanza: Integer;
-  IdEnvase: Integer;
-  NEnvase:String;
-   IdTurno: Integer;
-   NTurno:string;
-      Lote: String;
+	Id: Integer;
+	IdBalanza: Integer;
+	IdEnvase: Integer;
+	NEnvase: String;
+	IdTurno: Integer;
+	NTurno: string;
+	Lote: String;
+	Tara: Real;
+	Peso: Real;
+	Cantidad: Integer;
 end record;
 
 type TypArrayInfo is array[10] of TypInfo;
 
 
 type TypPesaje is record
-        Id: Integer;
-  IdBalanza: Integer;
-  IdEnvase: Integer;
-   IdTurno: Integer;
-      Lote: String;
-      Tara: Real;
-      Peso: Real;
-  QEnvases: Integer;
-     Fecha: DateTime;
+	Id: Integer;
+	IdBalanza: Integer;
+	IdEnvase: Integer;
+	IdTurno: Integer;
+	Lote: String;
+	Tara: Real;
+	Peso: Real;
+	QEnvases: Integer;
+	Fecha: DateTime;
 end record;
 
 type TypArrayPesaje is array[10] of TypPesaje;

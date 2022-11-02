@@ -42,13 +42,33 @@ begin
 
 end;
 
+procedure pPutPesos(entidad : TypInfo);
+sql : string;
+conexion : integer;
+sResultado : SysCode;
+
+begin
+	sql:="Update Info set ";
+	sql:=sql + "Tara=" +IntegerToString(entidad.Tara,0)+ ", ";
+    sql:=sql + "Peso=" +IntegerToString(entidad.Peso,0)+ ", ";
+    sql:=sql + "QEnvases= QEnvases + 1 ";
+	sql:=sql + "where id="+IntegerToString(entidad.Id,0);
+			
+	sResultado := DbExec(sql, conexion);
+	if (sResultado <> SysOk) then
+		pLoggerDB("pPutInfo",DBErrMsg);
+		return;
+	end if;
+
+end;
+
 function fGetInfoByIdBalanza(IdBalanza:Integer) : TypInfo;
 sql : string;
 conexion : integer;
 sResultado : SysCode;
 Info : TypInfo;
 begin
-    sql:="select t1.Id,t1.IdBalanz,t1.IdEnvase,t2.Nombre,t1.IdTurno,t3.Nombre,t1.Lote";
+    sql:="select t1.Id,t1.IdBalanz,t1.IdEnvase,t2.Nombre,t1.IdTurno,t3.Nombre,t1.Lote,t2.Tara,t1.Peso,t1.Cantidad";
     sql:=sql + " from info t1";
     sql:=sql + " left join Envase t2 on t1.IdEnvase=t2.Id";
     sql:=sql + " left join Turnos t3 on t1.IdTurno=t3.Id";
@@ -73,6 +93,10 @@ begin
     DbColumnInt(conexion, 5, Info.IdTurno);  
     DbColumnString(conexion, 6, Info.NTurno);  
     DbColumnString(conexion, 7, Info.Lote);  
+    
+    DbColumnReal(conexion, 8, Info.Tara);  
+    DbColumnReal(conexion, 9, Info.Peso);  
+    DbColumnInt(conexion, 10, Info.Cantidad);  
     sResultado := DbNext(conexion);  
     DbFinalize(conexion);
     pMostrarYLimpiar("Se obtuvo correctamente");

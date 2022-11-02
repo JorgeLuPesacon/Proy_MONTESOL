@@ -5,63 +5,65 @@ begin
 t_Envase:=fGetEnvase(g_IdItemActual);
 t_Turnos:=fGetTurno(g_IdItemActual);
 	if (g_PasoMantenimiento=tMantInicio) then
+			l_mensaje:="Ingrese Codigo de "+ g_NombreMenuMantenimiento;
 		if (g_TipoMantenimiento = tipoMantAgregar) then
 			l_entry:="";
-			l_mensaje:="Ingrese Codigo de "+ g_NombreMenuMantenimiento;
 		elsif (g_TipoMantenimiento = tipoMantEditar) then
 			if (g_NombreMenuMantenimiento = CONST_ENVASE_LABEL) then
 				l_entry := t_envase.Codigo;
-				l_mensaje:="Ingrese Codigo de "+ g_NombreMenuMantenimiento;
 			elsif (g_NombreMenuMantenimiento = CONST_TURNOS_LABEL) then
 				l_entry := t_turnos.Codigo;
-				l_mensaje:="Ingrese Codigo de "+ g_NombreMenuMantenimiento;
 			end if;
 		end if;
 		SetEntry(l_entry);
 		PromptUser(l_mensaje);
 
 	elsif(g_PasoMantenimiento=tMantCodigo) then
+			l_mensaje:="Ingrese Nombre de "+ g_NombreMenuMantenimiento;
 		if (g_TipoMantenimiento = tipoMantAgregar) then
 			l_entry:="";
-			l_mensaje:="Ingrese Nombre de "+ g_NombreMenuMantenimiento;
 		elsif (g_TipoMantenimiento = tipoMantEditar) then
 			if (g_NombreMenuMantenimiento = CONST_ENVASE_LABEL) then
 				l_entry := t_envase.Nombre;
-				l_mensaje:="Ingrese Nombre de "+ g_NombreMenuMantenimiento;
 			elsif (g_NombreMenuMantenimiento = CONST_TURNOS_LABEL) then
 				l_entry := t_turnos.Nombre;
-				l_mensaje:="Ingrese Nombre de "+ g_NombreMenuMantenimiento;
 			end if;
 		end if;
 		SetEntry(l_entry);
 		PromptUser(l_mensaje);
 	elsif(g_PasoMantenimiento=tMantNombre) then
+			l_mensaje:="Ingrese Corte Grueso de "+ g_NombreMenuMantenimiento;
 		if (g_TipoMantenimiento = tipoMantAgregar) then
 			l_entry:="";
-			l_mensaje:="Ingrese Corte Grueso de "+ g_NombreMenuMantenimiento;
 		elsif (g_TipoMantenimiento = tipoMantEditar) then
             l_entry := RealToString(t_envase.CorteGrueso,4,2);
-            l_mensaje:="Ingrese Corte Grueso de "+ g_NombreMenuMantenimiento;
 		end if;
 		SetEntry(l_entry);
 		PromptUser(l_mensaje);
 	elsif(g_PasoMantenimiento=tMantCorteGrueso) then
+		l_mensaje:="Ingrese Corte Fino de "+ g_NombreMenuMantenimiento;
 		if (g_TipoMantenimiento = tipoMantAgregar) then
 			l_entry:="";
-			l_mensaje:="Ingrese Corte Fino de "+ g_NombreMenuMantenimiento;
 		elsif (g_TipoMantenimiento = tipoMantEditar) then
             l_entry :=RealToString(t_envase.CorteFino,4,2);
-            l_mensaje:="Ingrese Corte Fino de "+ g_NombreMenuMantenimiento;
 		end if;
 		SetEntry(l_entry);
 		PromptUser(l_mensaje);
 	elsif(g_PasoMantenimiento=tMantCorteFino) then
+		l_mensaje:="Ingrese Objetivo de "+ g_NombreMenuMantenimiento;
 		if (g_TipoMantenimiento = tipoMantAgregar) then
 			l_entry:="";
-			l_mensaje:="Ingrese PreActivado de "+ g_NombreMenuMantenimiento;
 		elsif (g_TipoMantenimiento = tipoMantEditar) then
-            l_entry :=IntegerToString(t_envase.PreActivo,0);
-            l_mensaje:="Ingrese PreActivado de "+ g_NombreMenuMantenimiento;
+            l_entry :=IntegerToString(t_envase.Objetivo,0);
+		end if;
+		SetEntry(l_entry);
+		PromptUser(l_mensaje);
+	elsif(g_PasoMantenimiento=tMantObjetivo) then
+		l_mensaje:="Ingrese Tara de "+ g_NombreMenuMantenimiento;
+		if (g_TipoMantenimiento = tipoMantAgregar) then
+			l_entry:="";
+		elsif (g_TipoMantenimiento = tipoMantEditar) then
+            l_entry :=RealToString(t_envase.Tara,0,2);
 		end if;
 		SetEntry(l_entry);
 		PromptUser(l_mensaje);
@@ -85,7 +87,6 @@ begin
 		end if;
         pMuestraTurnos;
 	end if;
---pElegirPantallaMantenimientoARetornar;
 end;
 
 Procedure pGuardarTemporal(valor:string);
@@ -95,11 +96,13 @@ begin
 	elsif(g_PasoMantenimiento = tMantNombre) then
 		t_MantGenerico.Nombre:=valor;
 	elsif(g_PasoMantenimiento = tMantCorteGrueso) then
-		t_MantGenerico.CorteGrueso:=StringToReal(valor);
+		t_MantGenerico.CorteGrueso := StringToReal(valor);
 	elsif(g_PasoMantenimiento = tMantCorteFino) then
-		t_MantGenerico.CorteFino:=StringToReal(valor);
-	elsif(g_PasoMantenimiento = tMantPreActivo) then
-		t_MantGenerico.PreActivo:=StringToInteger(valor);
+		t_MantGenerico.CorteFino := StringToReal(valor);
+	elsif(g_PasoMantenimiento = tMantObjetivo) then
+		t_MantGenerico.Objetivo := StringToReal(valor);
+	elsif(g_PasoMantenimiento = tMantTara) then
+		t_MantGenerico.Tara := StringToReal(valor);
 	end if;
 end;
 

@@ -23,8 +23,12 @@ elsif (g_PasoMantenimiento = tMantCorteGrueso) then
 elsif (g_PasoMantenimiento = tMantCorteFino) then
 	pGuardarTemporal(userInput);
 	pMuestraPromptMantenimiento;
-	g_PasoMantenimiento := tMantPreActivo;
-elsif (g_PasoMantenimiento = tMantPreActivo) then
+	g_PasoMantenimiento := tMantObjetivo;
+elsif (g_PasoMantenimiento = tMantObjetivo) then
+	pGuardarTemporal(userInput);
+	pMuestraPromptMantenimiento;
+	g_PasoMantenimiento := tMantTara;
+elsif (g_PasoMantenimiento = tMantTara) then
 	pGuardarTemporal(userInput);
     pGuardaMantenimiento;
 end if;

@@ -15,3 +15,21 @@ begin
     SetTimerMode(2, TimerOneShot);
     StartTimer(2);
 end;
+
+handler SP3Trip;
+begin
+    DisableSP(3);
+    SetDigOut(0, 5, 0);
+    EnableSP(2);
+    SetDigOut(0, 6, 1);
+end;
+
+
+handler SP4Trip;
+begin
+    DisableSP(4);
+    SetDigOut(0, 6, 0);
+    SetTimer(3, 50);
+    SetTimerMode(3, TimerOneShot);
+    StartTimer(3);
+end;
