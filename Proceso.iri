@@ -1,6 +1,8 @@
 procedure IniciarProceso(numBal : integer);
 infoBalanza : TypInfo;
 infoEnvase : TypEnvase;
+
+ -- Validations.
 begin
     if (g_ProcesoPesaje[numBal] = 1) then
         pMostrarYLimpiar("Balanza ya iniciada");
@@ -12,15 +14,17 @@ begin
         pMostrarYLimpiar("Debe llenar datos para iniciar");
         return;
     end if;
-
+    
+-- Main filling procces.
     infoEnvase := fGetEnvase(infoBalanza.idEnvase);
-    g_ProcesoPesaje[numBal]:=1;
+    g_ProcesoPesaje[numBal]:= 1;
     if (numBal = CONST_ID_BALANZA_01) then
         SetSPValue(1, infoEnvase.CorteGrueso);
         SetSPValue(2, infoEnvase.CorteFino);
         SetDigOut(0, 1, 1);
         EnableSP(1);
         DisableSP(2);
+       
     elsif (numBal = CONST_ID_BALANZA_02) then
         SetSPValue(3, infoEnvase.CorteGrueso);
         SetSPValue(4, infoEnvase.CorteFino);
@@ -30,6 +34,7 @@ begin
     end if;
 end;
 
+-- Stop soft-buttom procces.
 procedure DetenerProceso(numBal : integer);
 begin
     if (g_ProcesoPesaje[numBal] = 1) then
@@ -44,10 +49,11 @@ begin
             SetDigOut(0, 5, 0);
             SetDigOut(0, 6, 0);
         end if;
-        g_ProcesoPesaje[numBal]:=0;
+        g_ProcesoPesaje[numBal]:= 0;
     end if;
 end;
 
+-- Saving weighing procces.
 procedure pGuardarPeso(numBal : integer);
 infoBalanza : TypInfo;
 t_pesaje : TypPesaje;
